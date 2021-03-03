@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import userSchema from "../models/User.js";
+import jwt from "jsonwebtoken"
 
 export default class userCtrl {
   signup = (req, res, next) => {
@@ -32,7 +33,11 @@ export default class userCtrl {
             }
             res.status(200).json({
               userId: user._id,
-              token: "TOKEN",
+              token: jwt.sign(
+                {userId: user._id},
+                'Random_Token_Secret',
+                {expiresIn: '24h'}
+                ),
             });
           })
           .catch((error) => res.status(500).json({ error }));
