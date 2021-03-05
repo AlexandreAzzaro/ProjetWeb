@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import stuffRoute from "./routes/stuff.js"
 import userRoute from "./routes/User.js"
+import cors from 'cors'
 //import MongoClient from 'mongodb'
 const app = express();
 
@@ -31,6 +32,7 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
     next();
   });
+  app.use(cors())
 
 app.use(bodyParser.json());
 
