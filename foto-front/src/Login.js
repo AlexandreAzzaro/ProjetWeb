@@ -12,33 +12,32 @@ export default function Login() {
 
     const [errorMessage, setErrorMessage] = useState("");
 
-    console.log("id : " + localStorage.getItem('id'));
-    console.log("username : " + localStorage.getItem('username'));
-    console.log("password : " + localStorage.getItem('password'));
-    console.log("token : " + localStorage.getItem('token'));
-    console.log("loggedIn : " + localStorage.getItem('loggedIn'));
-
     function onSubmitLogin(event) {
         
 
         let username = usernameInput.current.value;
         let password = passwordInput.current.value;
+        let id = null;
 
         event.preventDefault();
 
-        // fetch('http://localhost:5000/login')
-        //     .then(response => response.json)
-        //     .then(error =>)
+        const form = {
+            username: username,
+            password: password
+        }
 
-        if(true) {
-            // localStorage.setItem('id',idTest);
-            // localStorage.setItem('username',username);
-            // localStorage.setItem('password',password);
-            // localStorage.setItem('token','tbn9yIHDFB');
-            // localStorage.setItem('loggedIn',true);
-            
+        fetch('http://localhost:5000/login',{
+            method:'POST',
+            body:JSON.stringify(form),
+            headers: {"Content-type": "application/json; charset=UTF-8"}
+        })
+            .then((response) => id = response.userId)
+            .catch(() => id = null);
 
-            
+        console.log("id : " + id);
+        
+        if(id !== null) {
+        
             setErrorMessage("");
 
             push("/feed");
