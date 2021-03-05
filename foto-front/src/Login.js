@@ -19,21 +19,25 @@ export default function Login() {
     console.log("loggedIn : " + localStorage.getItem('loggedIn'));
 
     function onSubmitLogin(event) {
-        let usernameTest = "toto";
-        let passwordTest = "tata";
-        let idTest = "hjhuz6b2233g";
+        
 
         let username = usernameInput.current.value;
         let password = passwordInput.current.value;
 
         event.preventDefault();
 
-        if(usernameTest === username && passwordTest === password) {
-            localStorage.setItem('id',idTest);
-            localStorage.setItem('username',username);
-            localStorage.setItem('password',password);
-            localStorage.setItem('token','tbn9yIHDFB');
-            localStorage.setItem('loggedIn',true);
+        // fetch('http://localhost:5000/login')
+        //     .then(response => response.json)
+        //     .then(error =>)
+
+        if(true) {
+            // localStorage.setItem('id',idTest);
+            // localStorage.setItem('username',username);
+            // localStorage.setItem('password',password);
+            // localStorage.setItem('token','tbn9yIHDFB');
+            // localStorage.setItem('loggedIn',true);
+            
+
             
             setErrorMessage("");
 

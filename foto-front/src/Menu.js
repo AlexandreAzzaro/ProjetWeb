@@ -18,7 +18,7 @@ export default function Menu ({currentPage}) {
         }
 	}, []);
 
-
+    
     function onSubmitLogout() {
         localStorage.setItem('id',null);
         localStorage.setItem('username',null);
