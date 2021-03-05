@@ -3,14 +3,17 @@ import { Row,Col, Container, Image } from 'react-bootstrap';
 import './css/Profile.css';
 import Menu from './Menu';
 import profile from './img/profile.svg';
+import { Redirect } from 'react-router-dom';
 
 export default function Profile() {
-
+    
     console.log("id : " + localStorage.getItem('id'));
     console.log("username : " + localStorage.getItem('username'));
-    console.log("password : " + localStorage.getItem('password'));
-    console.log("token : " + localStorage.getItem('token'));
     console.log("loggedIn : " + localStorage.getItem('loggedIn'));
+
+    if(localStorage.getItem('loggedIn') !== 'true') {
+        return <Redirect to="/login" />
+    }
 
     return (
         <div>

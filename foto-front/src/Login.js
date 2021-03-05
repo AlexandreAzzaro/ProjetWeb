@@ -12,32 +12,40 @@ export default function Login() {
 
     const [errorMessage, setErrorMessage] = useState("");
 
+    console.log("id : " + localStorage.getItem('id'));
+    console.log("username : " + localStorage.getItem('username'));
+    console.log("loggedIn : " + localStorage.getItem('loggedIn'));
+
     function onSubmitLogin(event) {
         
 
         let username = usernameInput.current.value;
         let password = passwordInput.current.value;
-        let id = null;
+        let id = "bjhbjhvhgvhcghc";
 
         event.preventDefault();
 
-        const form = {
-            username: username,
-            password: password
-        }
+        // const form = {
+        //     username: username,
+        //     password: password
+        // }
 
-        fetch('http://localhost:5000/login',{
-            method:'POST',
-            body:JSON.stringify(form),
-            headers: {"Content-type": "application/json; charset=UTF-8"}
-        })
-            .then((response) => id = response.userId)
-            .catch(() => id = null);
+        // fetch('http://localhost:5000/login',{
+        //     method:'POST',
+        //     body:JSON.stringify(form),
+        //     headers: {"Content-type": "application/json; charset=UTF-8"}
+        // })
+        //     .then((response) => id = response.userId)
+        //     .catch(() => id = null);
 
-        console.log("id : " + id);
+        // console.log("id : " + id);
         
-        if(id !== null) {
-        
+        if(id !== null && username === "toto" && password === "toto") {
+            
+            localStorage.setItem("id",id);
+            localStorage.setItem("username",username);
+            localStorage.setItem("loggedIn",'true');
+
             setErrorMessage("");
 
             push("/feed");
@@ -49,24 +57,25 @@ export default function Login() {
 
     function onSubmitSubscribe(event) {
         event.preventDefault();
-        alert("inscription à faire plus tard");
+        
+        push("/subcription");
     }
 
     
     
     return ( 
-        <div id="login">
+        <div className="login">
             <h1>Foto</h1>
 
             <Form className="loginForm" onSubmit={onSubmitLogin}>
                 <Form.Group controlId="formUsername">
                     <Form.Label>Nom d'utilisateur<br/></Form.Label>
-                    <Form.Control type="text" placeholder="Username" ref={usernameInput} required />
+                    <Form.Control type="text" placeholder="Entrez votre pseudo" ref={usernameInput} required />
                 </Form.Group>
 
                 <Form.Group controlId="formPassword">
                     <Form.Label>Mot de passe<br/></Form.Label>
-                    <Form.Control type="password" placeholder="Password" ref={passwordInput} required />
+                    <Form.Control type="password" placeholder="Entrez votre mot de passe" ref={passwordInput} required />
                 </Form.Group>
 
                 <Form.Text className="formError">

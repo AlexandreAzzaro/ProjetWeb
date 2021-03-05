@@ -3,11 +3,9 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import Login from './Login';
 import Feed from './Feed';
 import Profile from './Profile';
+import Subcription from './Subcription';
 
-export default function Navigator (){
-
-   
-
+export default function Navigator () {
     return (
         <Switch>
             <Route exact path="/">
@@ -24,6 +22,10 @@ export default function Navigator (){
 
             <Route exact path="/profile">
                 <Profile />
+            </Route>
+
+            <Route exact path="/subcription">
+                <Subcription />
             </Route>
         </Switch>
     );

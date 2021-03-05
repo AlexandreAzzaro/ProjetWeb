@@ -43,7 +43,7 @@ export default function Menu ({currentPage}) {
                 
                 {searchBar}
     
-                <NavLink 
+                <NavLink className="toProfile"
                     to="/profile"
                     style={{
                         verticalAlign: 'middle',
@@ -55,8 +55,9 @@ export default function Menu ({currentPage}) {
                         height='35px'/>
                 </NavLink>
 
-                <NavLink to="/login" 
-                    isActive={onSubmitLogout}
+                <NavLink className="toLogin"
+                    onClick={onSubmitLogout}
+                    to="/login" 
                     style={{
                         verticalAlign: 'middle',
                         marginLeft: '5%'
