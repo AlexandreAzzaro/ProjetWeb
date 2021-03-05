@@ -20,6 +20,7 @@ export default function Login() {
     function onSubmitLogin(event) {
         let usernameTest = "toto";
         let passwordTest = "tata";
+        let idTest = "hjhuz6b2233g";
 
         let username = usernameInput.current.value;
         let password = passwordInput.current.value;
@@ -27,6 +28,7 @@ export default function Login() {
         event.preventDefault();
 
         if(usernameTest === username && passwordTest === password) {
+            localStorage.setItem('id',idTest);
             localStorage.setItem('username',username);
             localStorage.setItem('password',password);
             localStorage.setItem('token','tbn9yIHDFB');

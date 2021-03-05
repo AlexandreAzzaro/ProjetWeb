@@ -1,0 +1,15 @@
+nav {
+    overflow: hidden;
+    border: solid 3px black;
+    position: fixed; 
+    top: 0; 
+    width: 100%;
+    height: 8%; 
+    padding-top: 1%;
+}
+
+.searchBar {
+    margin-left: 3%;
+}
+
+
