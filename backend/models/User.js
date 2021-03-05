@@ -2,8 +2,17 @@ import mongoose from 'mongoose';
 import uniqValidator from 'mongoose-unique-validator'
 
 const userSchema = mongoose.Schema({
+username: {type : String, required: true, unique: true},
+firts_name: {type : String, required: true},
+last_name: {type : String, required: true},
 email: {type : String, required: true, unique: true},
-password: {type : String, required: true}
+birthday: {type : Date, required: true},
+password: {type : String, required: true, unique: true},
+admin: {type : Boolean, required: true},
+published_photos: {type : [String]},
+liked_photos: {type : [String]},
+subscribed_tags: {type : [String]},
+creation_date: {type : Date, required: true}, 
 });
 
 userSchema.plugin(uniqValidator);
