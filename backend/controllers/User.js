@@ -20,7 +20,7 @@ export default class userCtrl {
   };
 
   login = (req, res, next) => {
-    userSchema.findOne({ email: req.body.email })
+    userSchema.findOne({ username: req.body.username })
       .then((user) => {
         if (!user) {
           return res.status(401).json({ error: "utilisateur inconnu" });
