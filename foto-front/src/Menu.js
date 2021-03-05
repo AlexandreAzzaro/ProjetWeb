@@ -20,6 +20,7 @@ export default function Menu ({currentPage}) {
 
 
     function onSubmitLogout() {
+        localStorage.setItem('id',null);
         localStorage.setItem('username',null);
         localStorage.setItem('password',null);
         localStorage.setItem('token',null);
@@ -44,7 +45,6 @@ export default function Menu ({currentPage}) {
     
                 <NavLink 
                     to="/profile"
-                    isActive={onSubmitLogout}
                     style={{
                         verticalAlign: 'middle',
                         marginLeft: '50%'
@@ -56,6 +56,7 @@ export default function Menu ({currentPage}) {
                 </NavLink>
 
                 <NavLink to="/login" 
+                    isActive={onSubmitLogout}
                     style={{
                         verticalAlign: 'middle',
                         marginLeft: '5%'

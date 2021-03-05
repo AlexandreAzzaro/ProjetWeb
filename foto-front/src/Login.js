@@ -12,6 +12,7 @@ export default function Login() {
 
     const [errorMessage, setErrorMessage] = useState("");
 
+    console.log("id : " + localStorage.getItem('id'));
     console.log("username : " + localStorage.getItem('username'));
     console.log("password : " + localStorage.getItem('password'));
     console.log("token : " + localStorage.getItem('token'));
