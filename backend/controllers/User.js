@@ -44,4 +44,20 @@ export default class userCtrl {
       })
       .catch((error) => res.status(500).json({ error }));
   };
+
+  isUsernameExist = (req, res, next) => {
+    userSchema.findOne({
+      username: req.params.username,
+    })
+      .then((userSchema) => res.status(200).json(userSchema))
+      .catch((error) => res.status(404).json(error));
+  };
+
+  isemailExist = (req, res, next) => {
+    PostImg.findOne({
+      email: req.params.email,
+    })
+      .then((userSchema) => res.status(200).json(userSchema))
+      .catch((error) => res.status(404).json(error));
+  };
 }

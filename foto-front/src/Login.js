@@ -21,24 +21,24 @@ export default function Login() {
 
         let username = usernameInput.current.value;
         let password = passwordInput.current.value;
-        let id = "bjhbjhvhgvhcghc";
+        let id;
 
         event.preventDefault();
 
-        // const form = {
-        //     username: username,
-        //     password: password
-        // }
+         const form = {
+             username: username,
+             password: password
+         }
 
-        // fetch('http://localhost:5000/login',{
-        //     method:'POST',
-        //     body:JSON.stringify(form),
-        //     headers: {"Content-type": "application/json; charset=UTF-8"}
-        // })
-        //     .then((response) => id = response.userId)
-        //     .catch(() => id = null);
+         fetch('http://localhost:5000/login',{
+             method:'POST',
+             body:JSON.stringify(form),
+             headers: {"Content-type": "application/json; charset=UTF-8"}
+         })
+             .then((response) => id = response.userId)
+             .catch(() => id = null);
 
-        // console.log("id : " + id);
+         console.log("id : " + id);
         
         if(id !== null && username === "toto" && password === "toto") {
             

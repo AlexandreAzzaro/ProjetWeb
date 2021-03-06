@@ -21,7 +21,7 @@ export default function Subcription() {
 
         let username = usernameInput.current.value;
         let email = emailInput.current.value;
-        let birthday = birthdayInput.current.value;
+        let birthday = birthdayInput.getDate();
         let password = passwordInput.current.value;
         let verificationPassword = verificationPasswordInput.current.value;
 
@@ -37,7 +37,16 @@ export default function Subcription() {
                 password: password
             };
 
-            console.log(form);
+            fetch('http://localhost:5000/signup',{
+             method:'POST',
+             body:JSON.stringify(form),
+             headers: {"Content-type": "application/json; charset=UTF-8"}
+         })
+             //.then((response) => {return response.json()})
+             .then((response) => {console.log(response.json())})
+             .catch((error) => {console.log(error)});
+
+            //console.log(form);
         }
     }
 
