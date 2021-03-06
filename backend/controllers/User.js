@@ -3,20 +3,16 @@ import userSchema from "../models/User.js";
 //import jwt from "jsonwebtoken"
 
 export default class userCtrl {
-  signup = (req, res, next) => {
-    bcrypt
-      .hash(req.body.password, 10)
-      .then((hash) => {
+  signup = async (req, res, next) => {
+    let hashpass = await bcrypt.hash(req.body.password, 10)
+    req.body.password = hashpass
         const user = new userSchema({
-          email: req.body.email,
-          password: hash,
+          ...req.body
         });
-        user
+        return user
           .save()
-          .then(() => res.status(201).json({ message: "utilisateur créé" }))
-          .catch((error) => res.status(500).json({ error }));
-      })
-      .catch((error) => res.status(500).json({ error }));
+          .then(() => {return res.status(201).json({ message: "utilisateur créé" })})
+          .catch((error) => {console.log(error), res.status(500).json({ error })});
   };
 
   login = (req, res, next) => {

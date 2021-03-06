@@ -38,5 +38,6 @@ app.use(bodyParser.json());
 
 app.use('/api/stuff', stuffRoute);
 app.use('/api/auth', userRoute);
+app.use('/api/user', userRoute)
 
 export default app;

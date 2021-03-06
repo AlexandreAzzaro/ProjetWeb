@@ -6,10 +6,10 @@ const ctrl = new stuffCtrl();
 const authent = new auth();
 const router = express.Router();
 
-router.get('/', authent.auth, ctrl.getAllStuff);
-router.post('/', authent.auth, ctrl.createThing);
-router.get('/:id', authent.auth, ctrl.getOneThing);
-router.put('/:id', authent.auth, ctrl.modifyThing);
-router.delete('/:id', authent.auth, ctrl.deleteThing);
+router.get('/', ctrl.getAllStuff);
+router.post('/', ctrl.createThing);
+router.get('/:id', ctrl.getOneThing);
+router.put('/:id', ctrl.modifyThing);
+router.delete('/:id', ctrl.deleteThing);
 
 export default router;  
