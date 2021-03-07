@@ -32,15 +32,19 @@ export default function Subcription() {
         email: email,
         birthday: birthday,
         password: password,
+        admin: false,
+        published_photos: [],
+        liked_photos: [],
+        subscribed_tags: [],
+        creation_date: Date.now(),
       };
-      
+
       let res = await fetch("http://localhost:5000/api/user/signup", {
         method: "POST",
-        body: JSON.stringify(form), 
+        body: JSON.stringify(form),
         headers: { "Content-type": "application/json; charset=UTF-8" },
-      })
-        //.then((response) => {return response.json()})
-        
+      });
+      //.then((response) => {return response.json()})
 
       console.log(res);
     }
