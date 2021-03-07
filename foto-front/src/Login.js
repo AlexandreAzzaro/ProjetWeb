@@ -16,7 +16,7 @@ export default function Login() {
     console.log("username : " + localStorage.getItem('username'));
     console.log("loggedIn : " + localStorage.getItem('loggedIn'));
 
-    function onSubmitLogin(event) {
+    async function onSubmitLogin(event) {
         
 
         let username = usernameInput.current.value;
@@ -30,17 +30,14 @@ export default function Login() {
              password: password
          }
 
-         fetch('http://localhost:5000/login',{
+        await fetch('http://localhost:5000/api/user/login',{
              method:'POST',
              body:JSON.stringify(form),
              headers: {"Content-type": "application/json; charset=UTF-8"}
          })
-             .then((response) => id = response.userId)
-             .catch(() => id = null);
-
-         console.log("id : " + id);
+             .then(response => console.log(JSON.stringify(response)))
         
-        if(id !== null && username === "toto" && password === "toto") {
+        if(id) {
             
             localStorage.setItem("id",id);
             localStorage.setItem("username",username);

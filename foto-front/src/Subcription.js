@@ -3,10 +3,12 @@ import "./css/Subscription.css";
 import { Form, Button } from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import { useHistory } from "react-router-dom";
 
 export default function Subcription() {
   const [errorMessage, setErrorMessage] = useState("");
   const [birthdayInput, setBirthdayInput] = useState(new Date());
+  const { push } = useHistory();
 
   const usernameInput = useRef(null),
     emailInput = useRef(null),
@@ -39,14 +41,14 @@ export default function Subcription() {
         creation_date: Date.now(),
       };
 
-      let res = await fetch("http://localhost:5000/api/user/signup", {
+      await fetch("http://localhost:5000/api/user/signup", {
         method: "POST",
         body: JSON.stringify(form),
         headers: { "Content-type": "application/json; charset=UTF-8" },
       });
-      //.then((response) => {return response.json()})
 
-      console.log(res);
+
+      push('/login');
     }
   }
 
