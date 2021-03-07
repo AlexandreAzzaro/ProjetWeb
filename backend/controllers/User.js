@@ -57,7 +57,9 @@ export default class userCtrl {
         if (!valid) {
           return res.status(401).json({ error: "mot de passe incorrect" });
         }
+        console.log(user._id)
         res.status(200).json({ userId: user._id });
+        //console.log(userId)
       } catch (error) {
         res.status(500).json(error);
       }
