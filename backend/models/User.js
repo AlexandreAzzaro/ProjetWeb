@@ -5,7 +5,7 @@ const userSchema = mongoose.Schema({
 username: {type : String, required: true, unique: true},
 email: {type : String, required: true, unique: true},
 birthday: {type : Date, required: true},
-password: {type : String, required: true, unique: true},
+password: {type : String, required: true},
 admin: {type : Boolean, required: true},
 published_photos: {type : [String]},
 liked_photos: {type : [String]},

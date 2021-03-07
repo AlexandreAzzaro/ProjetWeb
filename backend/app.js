@@ -1,7 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-import stuffRoute from "./routes/stuff.js"
+import postRoute from "./routes/postImg.js"
 import userRoute from "./routes/User.js"
 import cors from 'cors'
 //import MongoClient from 'mongodb'
@@ -36,8 +36,8 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
-app.use('/api/stuff', stuffRoute);
+app.use('/api/postImg', postRoute);
 app.use('/api/auth', userRoute);
-app.use('/api/user', userRoute)
+app.use('/api/user', userRoute);
 
 export default app;
