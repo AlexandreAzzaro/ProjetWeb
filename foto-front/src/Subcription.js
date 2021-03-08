@@ -53,7 +53,7 @@ export default function Subcription() {
   }
 
   return (
-    <div className="login">
+    <div className="suscription">
       <h1>Foto</h1>
 
       <Form className="subscribeForm" onSubmit={onSubmitSubscribe}>

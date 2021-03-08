@@ -4,6 +4,7 @@ import Login from './Login';
 import Feed from './Feed';
 import Profile from './Profile';
 import Subcription from './Subcription';
+import AddPicture from './AddPicture';
 
 export default function Navigator () {
     return (
@@ -26,6 +27,10 @@ export default function Navigator () {
 
             <Route exact path="/subcription">
                 <Subcription />
+            </Route>
+
+            <Route exact path="/profile/addPicture">
+                <AddPicture />
             </Route>
         </Switch>
     );

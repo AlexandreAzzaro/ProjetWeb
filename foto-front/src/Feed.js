@@ -4,8 +4,7 @@ import Menu from './Menu';
 import { Redirect } from 'react-router-dom';
 
 export default function Feed() {
-    
-    console.log("id : " + localStorage.getItem('id'));
+
     console.log("username : " + localStorage.getItem('username'));
     console.log("loggedIn : " + localStorage.getItem('loggedIn'));
 

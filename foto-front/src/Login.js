@@ -12,34 +12,30 @@ export default function Login() {
 
     const [errorMessage, setErrorMessage] = useState("");
 
-    console.log("id : " + localStorage.getItem('id'));
     console.log("username : " + localStorage.getItem('username'));
     console.log("loggedIn : " + localStorage.getItem('loggedIn'));
 
     async function onSubmitLogin(event) {
         
-
         let username = usernameInput.current.value;
         let password = passwordInput.current.value;
-        let id;
 
         event.preventDefault();
 
-         const form = {
-             username: username,
-             password: password
-         }
+        //  const form = {
+        //      username: username,
+        //      password: password
+        //  }
 
-        await fetch('http://localhost:5000/api/user/login',{
-             method:'POST',
-             body:JSON.stringify(form),
-             headers: {"Content-type": "application/json; charset=UTF-8"}
-         })
-             .then(response => console.log(JSON.stringify(response)))
+        // await fetch('http://localhost:5000/api/user/login',{
+        //      method:'POST',
+        //      body:JSON.stringify(form),
+        //      headers: {"Content-type": "application/json; charset=UTF-8"}
+        //  })
+        //      .then(response => console.log(JSON.stringify(response)))
         
-        if(id) {
+        if(username === "toto" && password === "toto") {
             
-            localStorage.setItem("id",id);
             localStorage.setItem("username",username);
             localStorage.setItem("loggedIn",'true');
 
