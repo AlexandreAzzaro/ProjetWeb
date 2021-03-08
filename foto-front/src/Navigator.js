@@ -4,12 +4,17 @@ import Login from './Login';
 import Feed from './Feed';
 import Profile from './Profile';
 import Subcription from './Subcription';
+import Admin from './Admin'
 
 export default function Navigator () {
     return (
         <Switch>
             <Route exact path="/">
                 <Redirect to="/login" />
+            </Route>
+
+            <Route exact path="/admin">
+                <Admin />
             </Route>
 
             <Route exact path="/feed">
