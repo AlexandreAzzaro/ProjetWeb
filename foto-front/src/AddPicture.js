@@ -20,6 +20,8 @@ export default function AddPicture() {
     const tags = document.getElementsByClassName("tagsInput")[0].value.split(";");
     const caption = captionInput.current.value;
 
+    
+
     const form = {
       title: title,
       tags: tags,
