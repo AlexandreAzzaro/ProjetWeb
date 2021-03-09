@@ -13,8 +13,8 @@ export default function Feed() {
     }
 
     return (
-        <div >
-            <Menu currentPage='feed'/>
+        <div className="feed">
+            <Menu />
             <h1>feeeeeeeeeeed</h1>
         </div>
     );

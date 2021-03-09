@@ -1,6 +1,6 @@
-import React, { useState, useRef } from 'react';
+import React, { useRef } from 'react';
 import './css/AddPicture.css';
-import {Form, Button} from 'react-bootstrap';
+import {Form, Button, InputGroup} from 'react-bootstrap';
 import Menu from './Menu'
 
 
@@ -33,9 +33,9 @@ export default function AddPicture() {
   }
 
   function addTag() {
-    if (count == 0) {
+    if (addTagsInput.current.value != "" && count == 0) {
       document.getElementsByClassName("tagsInput")[0].value += addTagsInput.current.value;
-    } else {
+    } else if (addTagsInput.current.value != ""){
       document.getElementsByClassName("tagsInput")[0].value += ';' + addTagsInput.current.value;
     }
     count++;
@@ -45,17 +45,18 @@ export default function AddPicture() {
   return (
       
       <div className="addPicture">
-        <Menu currentPage='addPicture'/>
+        <Menu />
         <h1>Ajouter une photo</h1>
   
         <Form className="subscribeForm" onSubmit={onSubmitAddPicture}>
           
         <Form.Group controlId="formTitle">
-            <Form.Label>
+            <Form.Label className="label">
               Titre
               <br />
             </Form.Label>
             <Form.Control
+              className="text"
               type="text"
               placeholder="Choisissez un titre"
               ref={titleInput}
@@ -69,9 +70,9 @@ export default function AddPicture() {
               <br />
             </Form.Label>
             <Form.File 
-              className="fileUploader"
+              className="text"
               ref={photoInput}
-              custom
+              //custom
               required
            />
           </Form.Group>
@@ -81,12 +82,22 @@ export default function AddPicture() {
               Tags
               <br />
             </Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Entrez vos tags"
-              ref={addTagsInput}
-            />
-            <Button onClick={addTag}>Ajouter</Button><br/>
+            
+            <InputGroup className="text">
+              <Form.Control
+                
+                type="text"
+                placeholder="Entrez vos tags"
+                ref={addTagsInput}
+              />
+              
+              <InputGroup.Append>
+                <Button className="button" onClick={addTag}>Ajouter</Button>
+              </InputGroup.Append>
+              
+            </InputGroup>
+            
+            
             <Form.Control
               className="tagsInput"
               type="text"
@@ -100,6 +111,7 @@ export default function AddPicture() {
               <br />
             </Form.Label>
             <Form.Control
+              className="caption"
               type="text"
               placeholder="Ecrivez une description"
               as='textarea'
@@ -108,7 +120,7 @@ export default function AddPicture() {
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit">
+          <Button className="button" variant="primary" type="submit">
             Publier
           </Button>
         </Form>

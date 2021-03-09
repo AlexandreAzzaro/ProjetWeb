@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import {Form, Button} from 'react-bootstrap';
 
 
+
 export default function Login() {
     const usernameInput = useRef(null),
 		passwordInput = useRef(null);
@@ -62,25 +63,26 @@ export default function Login() {
 
             <Form className="loginForm" onSubmit={onSubmitLogin}>
                 <Form.Group controlId="formUsername">
-                    <Form.Label>Nom d'utilisateur<br/></Form.Label>
-                    <Form.Control type="text" placeholder="Entrez votre pseudo" ref={usernameInput} required />
+                    <Form.Label className="label">Nom d'utilisateur<br/></Form.Label>
+                    <Form.Control className="text" type="text" placeholder="Entrez votre pseudo" ref={usernameInput} required />
                 </Form.Group>
 
                 <Form.Group controlId="formPassword">
-                    <Form.Label>Mot de passe<br/></Form.Label>
-                    <Form.Control type="password" placeholder="Entrez votre mot de passe" ref={passwordInput} required />
+                    <Form.Label className="label">Mot de passe<br/></Form.Label>
+                    <Form.Control className="text" type="password" placeholder="Entrez votre mot de passe" ref={passwordInput} required />
                 </Form.Group>
+                
 
                 <Form.Text className="formError">
-                    {errorMessage}<br/>
+                    {errorMessage}
                 </Form.Text>
-
-                <Button variant="primary" type="submit">
+                <br/>
+                <Button className="button" variant="primary" type="submit">
                     Se connecter
                 </Button>
-            </Form>
+            </Form><br/>
             <Form onSubmit={onSubmitSubscribe}>
-                <Button variant="primary" type="submit">
+                <Button className="button" variant="primary" type="submit">
                         S'inscrire
                 </Button>
             </Form>

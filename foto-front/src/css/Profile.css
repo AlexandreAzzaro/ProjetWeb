@@ -1,8 +1,13 @@
-.container {
-    margin-top: 10%;
-    margin-left: 5%;
+.profile-container {
+    text-align: center;
 }
 
-.edit {
-    margin-left: 20%;
+.profile h1 {
+    margin-top: 10%;
+    margin-bottom: 10%;
+
+}
+
+.profile-logo {
+    margin-right: 1%;
 }
