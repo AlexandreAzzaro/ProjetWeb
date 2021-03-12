@@ -5,6 +5,7 @@ import Feed from './Feed';
 import Profile from './Profile';
 import Subcription from './Subcription';
 import AddPicture from './AddPicture';
+import PostDetail from './PostDetail';
 
 export default function Navigator () {
     return (
@@ -32,6 +33,11 @@ export default function Navigator () {
             <Route exact path="/profile/addPicture">
                 <AddPicture />
             </Route>
+
+            <Route exact path="/post/:id">
+				<PostDetail />
+			</Route>
+
         </Switch>
     );
 

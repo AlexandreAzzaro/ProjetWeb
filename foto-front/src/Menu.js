@@ -8,10 +8,7 @@ import './css/Menu.css';
 export default function Menu () {
     
     function onSubmitLogout() {
-        localStorage.setItem('id',null);
         localStorage.setItem('username',null);
-        localStorage.setItem('password',null);
-        localStorage.setItem('token',null);
         localStorage.setItem('loggedIn',false);
     }
 

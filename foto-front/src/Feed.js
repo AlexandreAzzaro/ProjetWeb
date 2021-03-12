@@ -2,6 +2,7 @@ import React from 'react';
 import './css/Feed.css';
 import Menu from './Menu';
 import { Redirect } from 'react-router-dom';
+import PostList from './PostList';
 
 export default function Feed() {
 
@@ -15,7 +16,7 @@ export default function Feed() {
     return (
         <div className="feed">
             <Menu />
-            <h1>feeeeeeeeeeed</h1>
+            <PostList />
         </div>
     );
     

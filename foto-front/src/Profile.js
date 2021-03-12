@@ -1,9 +1,10 @@
 import React from 'react';
-import { Row,Col, Container, Image } from 'react-bootstrap';
+import { Image } from 'react-bootstrap';
 import './css/Profile.css';
 import Menu from './Menu';
 import profile from './img/profile.svg';
-import add from './img/add.svg'
+import add from './img/add.svg';
+import image from './img/image.svg'
 import { NavLink, Redirect } from 'react-router-dom';
 
 export default function Profile() {
@@ -18,9 +19,9 @@ export default function Profile() {
     return (
         <div className="profile">
             <Menu />
-            
+            <h1>Profil</h1>
             <div className="profile-container">
-                <h1>Profil</h1>
+                
                 
                 <Image 
                     className="profile-logo" 
@@ -33,37 +34,28 @@ export default function Profile() {
                     to="/profile" 
                     style={{
                         textDecoration: 'none',
-                        color: 'black'
+                        color: '#D9D9D9'
                     }}>
+                    <Image 
+                        className="logo"
+                        src={image} 
+                        width='30px'
+                        height='30px'/>
                     Vos images
-                </NavLink><br/>
-                <NavLink 
-                    to="/profile" 
-                    style={{
-                        textDecoration: 'none',
-                        color: 'black'
-                    }}>
-                    Vos Likes
-                </NavLink><br/>
-                <NavLink 
-                    to="/profile" 
-                    style={{
-                        textDecoration: 'none',
-                        color: 'black'
-                    }}>
-                    Vos Tags
                 </NavLink><br/><br/>
                 
                 <NavLink 
                     to="/profile/addPicture" 
                     style={{
                         textDecoration: 'none',
-                        color: 'black'
+                        color: '#D9D9D9'
                     }}>
-                    <Image src={add} 
+                    <Image 
+                        className="logo"
+                        src={add} 
                         width='30px'
                         height='30px'/>
-                    &nbsp;Ajouter une photo
+                    Ajouter une photo
                 </NavLink>
             </div>                
         </div>
