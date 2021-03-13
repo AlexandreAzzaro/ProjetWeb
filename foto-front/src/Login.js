@@ -28,18 +28,17 @@ export default function Login() {
               password: password
           }
 
-         await fetch('http://localhost:5000/api/user/login',{
+         let test = await fetch('http://localhost:5000/api/user/login',{
               method:'POST',
               body:JSON.stringify(form),
               headers: {"Content-type": "application/json; charset=UTF-8"}
           })
-        if(1) {
-            
+          console.log(test.status)
+        if(test.status === 200) {
             localStorage.setItem("username",username);
             localStorage.setItem("loggedIn",'true');
 
             setErrorMessage("");
-
             push("/feed");
             
         } else {

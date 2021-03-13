@@ -4,8 +4,8 @@ import userSchema from "../models/User.js";
 
 export default class userCtrl {
   signup = async (req, res, next) => {
-    //let hashpass = await bcrypt.hash(req.body.password, 10);
-    //req.body.password = hashpass;
+    let hashpass = await bcrypt.hash(req.body.password, 10);
+    req.body.password = hashpass;
     const user = new userSchema({
       ...req.body,
     });
@@ -19,75 +19,24 @@ export default class userCtrl {
       });
   };
 
-  /* login = async (req, res, next) => {
-    let user = await userSchema
-      .findOne({ username: req.body.username })
-      .then((user) => {
-        if (!user) {
-          return res.status(401).json({ error: "utilisateur inconnu" });
-        }
-        bcrypt
-          .compare(req.body.password, user.password)
-          .then((valid) => {
-            if (!valid) {
-              return res.status(401).json({ error: "mot de passe incorrect" });
-            }
-            res.status(200).json({
-              userId: user._id,
-              /*token: jwt.sign(
-               {userId: user._id},
-                'Random_Token_Secret',
-                {expiresIn: '24h'}
-                ),
-            });
-          })
-          .catch((error) => res.status(500).json({ error }));
-      })
-      .catch((error) => res.status(500).json({ error }));
-  };*/
-
-  /*login = async (req, res, next) => {
-    try {
-      let user = await userSchema.findOne({ username: req.body.username });
-      if (!user) {
-        return res.status(401).json({ error: "utilisateur inconnu" });
-      }
-      try {
-        await bcrypt.compare(req.body.password, user.password);
-        if (!valid) {
-          return res.status(401).json(false);
-        }
-        return res.status(200).json(true);
-        //console.log(userId)
-      } catch (error) {
-        return res.status(500).json(error);
-      }
-    } catch (error) {
-      return res.status(500).json(error);
-    }
-  };*/
-
   login = async (req, res, next) => {
-    let oneUsr;
     try {
-      oneUsr = await userSchema.findOne({
+      let oneUsr = await userSchema.findOne({
         username: req.body.username,
       });
       console.log(oneUsr)
-      if(!oneUsr){
+      if(oneUsr == null){
         throw ("l'utilisateur n'existe pas")
       }
-      return res.json(true)
-      /*try {
-        await bcrypt.compare(req.body.password, user.password);
+      try {
+        let valid = await bcrypt.compare(req.body.password, oneUsr.password);
         if (!valid) {
           return res.status(401).json(false);
         }
         return res.status(200).json(true);
-        //console.log(userId)
       } catch (error) {
         return res.status(500).json(error);
-      }*/
+      }
     } catch (error) {
       return res.status(500).json(error);
     }
