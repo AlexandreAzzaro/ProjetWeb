@@ -1,7 +1,8 @@
 import React, { useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 import './css/AddPicture.css';
 import {Form, Button, InputGroup} from 'react-bootstrap';
-import Menu from './Menu'
+import Menu from './Menu';
 
 
 export default function AddPicture() {
@@ -9,37 +10,56 @@ export default function AddPicture() {
   const titleInput = useRef(null),
     photoInput = useRef(null),
     addTagsInput = useRef(null),
+    addPersonInput = useRef(null),
     captionInput = useRef(null);
 
-  let tagsInput = "";
-  let count = 0;
+  const { push } = useHistory();
 
+  let countTags = 0;
+  let countPerson = 0;
 
   function onSubmitAddPicture() {
+    const user = localStorage.getItem('username');
     const title = titleInput.current.value;
-    const tags = document.getElementsByClassName("tagsInput")[0].value.split(";");
+    const tags = document.getElementsByClassName("tagsInput")[0].value.split(';');
+    const diffusion = document.getElementsByClassName("diffusionInput")[0].value.split(';');
     const caption = captionInput.current.value;
 
-    
 
     const form = {
+      user : user,
       title: title,
+      photo: photoInput.current.value, // faut changer ça
       tags: tags,
+      diffusion: diffusion,
       caption: caption
     }
 
-    alert(photoInput.current.value)
+
+    // requête au back
+    alert("Votre photo a bien été publiée !");
+    push("/profile");
     
   }
 
   function addTag() {
-    if (addTagsInput.current.value != "" && count == 0) {
+    if (addTagsInput.current.value != "" && countTags == 0) {
       document.getElementsByClassName("tagsInput")[0].value += addTagsInput.current.value;
     } else if (addTagsInput.current.value != ""){
       document.getElementsByClassName("tagsInput")[0].value += ';' + addTagsInput.current.value;
     }
-    count++;
+    countTags++;
     addTagsInput.current.value = "";
+  }
+
+  function addPerson() {
+    if (addPersonInput.current.value != "" && countPerson == 0) {
+      document.getElementsByClassName("diffusionInput")[0].value += addPersonInput.current.value;
+    } else if (addPersonInput.current.value != ""){
+      document.getElementsByClassName("diffusionInput")[0].value += ';' + addPersonInput.current.value;
+    }
+    countPerson++;
+    addPersonInput.current.value = "";
   }
 
   return (
@@ -72,7 +92,6 @@ export default function AddPicture() {
             <Form.File 
               className="text"
               ref={photoInput}
-              //custom
               required
            />
           </Form.Group>
@@ -104,7 +123,34 @@ export default function AddPicture() {
               required
             />
           </Form.Group>
-  
+
+          <Form.Group controlId="formDiffusion">
+            <Form.Label>
+              Liste de diffusion :
+              <br />
+            </Form.Label>
+            
+            <InputGroup className="text">
+              <Form.Control
+                
+                type="text"
+                placeholder="Ajoutez des personnes (optionnel)"
+                ref={addPersonInput}
+              />
+              
+              <InputGroup.Append>
+                <Button className="button" onClick={addPerson}>Ajouter</Button>
+              </InputGroup.Append>
+              
+            </InputGroup>
+            
+            
+            <Form.Control
+              className="diffusionInput"
+              type="text"
+            />
+          </Form.Group>
+
           <Form.Group controlId="formCaption">
             <Form.Label>
               Description
