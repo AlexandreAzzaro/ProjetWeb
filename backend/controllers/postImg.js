@@ -1,7 +1,7 @@
 import PostImg from "../models/postImg.js";
 
 export default class postCtrl {
-  createThing = (req, res, next) => {
+  createImg = (req, res, next) => {
     const postImg = new PostImg({
       ...req.body
     });
@@ -11,7 +11,7 @@ export default class postCtrl {
       .catch((error) => res.status(400).json(error));
   };
 
-  getOneThing = (req, res, next) => {
+  getOneImg = (req, res, next) => {
     PostImg.findOne({
       _id: req.params.id,
     })
@@ -19,7 +19,7 @@ export default class postCtrl {
       .catch((error) => res.status(404).json(error));
   };
 
-  modifyThing = (req, res, next) => {
+  modifyImg = (req, res, next) => {
     const postImg = new PostImg({
       ...req.body
     });
@@ -30,13 +30,13 @@ export default class postCtrl {
       .catch((error) => res.status(400).json(error));
   };
 
-  deleteThing = (req, res, next) => {
+  deleteImg = (req, res, next) => {
     PostImg.deleteOne({ _id: req.params.id })
       .then(() => res.status(200).json({ message: "Deleted!" }))
       .catch((error) => res.status(400).json(error));
   };
 
-  getAllStuff = (req, res, next) => {
+  getAllImg = (req, res, next) => {
     PostImg.find()
       .then((postImg) => res.status(200).json(postImg))
       .catch((error) => res.status(400).json(error));
