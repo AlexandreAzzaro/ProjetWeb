@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import { Image } from 'react-bootstrap';
 import './css/PostThumbnail.css';
 
-const PostThumbnail = ({post: {id, username, title, photo}}) => (
+const PostThumbnail = ({post: {id, username, title, imageUrl}}) => (
     <div className="thumbnail"> 
         <NavLink 
             to={`post/${id}`}
@@ -12,7 +12,7 @@ const PostThumbnail = ({post: {id, username, title, photo}}) => (
             }}>
             <h5>@{username} - {title}</h5>
             <Image 
-                src = {photo}
+                src = {imageUrl}
                 width = '50%'
             />
         </NavLink>

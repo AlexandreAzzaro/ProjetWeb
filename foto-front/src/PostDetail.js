@@ -47,7 +47,7 @@ export default function PostDetail() {
                 <Row className='image' style={{marginLeft: '10%'}}>
                     
                     <Image 
-                        src = {post.photo} 
+                        src = {post.imageUrl} 
                         width = "80%"/>
                 </Row>
                 <Row style={{marginBottom: '5%'}}>

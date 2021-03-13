@@ -15,6 +15,10 @@
     width: 60%;
 } 
 
+.addPicture .label {
+    font-weight: bold;
+} 
+
 .addPicture .tagsInput {
     margin-left: 20%;
     margin-right: 20%;
@@ -32,6 +36,7 @@
     margin-right: 20%;
     width: 60%;
 }
+
 
 .addPicture .text:focus {
     box-shadow: 0 0 .2rem #FE9802

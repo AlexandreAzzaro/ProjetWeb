@@ -18,23 +18,31 @@ export default function AddPicture() {
   let countTags = 0;
   let countPerson = 0;
 
-  function onSubmitAddPicture() {
-    const user = localStorage.getItem('username');
+  async function onSubmitAddPicture() {
+    const username = localStorage.getItem('username');
     const title = titleInput.current.value;
     const tags = document.getElementsByClassName("tagsInput")[0].value.split(';');
     const diffusion = document.getElementsByClassName("diffusionInput")[0].value.split(';');
     const caption = captionInput.current.value;
 
-
     const form = {
-      user : user,
+      username : username,
       title: title,
-      photo: photoInput.current.value, // faut changer ça
+      imageUrl: 'https://blog.groupeastek.com/wp-content/uploads/2015/10/observatoires-photographiques-du-paysage.jpeg', // faut changer ça
       tags: tags,
       diffusion: diffusion,
-      caption: caption
+      caption: caption,
+      likes: 0,
+      dislikes: 0,
+      creation_date: new Date()
     }
 
+    await fetch("http://localhost:5000/api/postImg/createImg", {
+        method: "POST",
+        body: JSON.stringify(form),
+        headers: { "Content-type": "application/json; charset=UTF-8" },
+    });
+    
 
     // requête au back
     alert("Votre photo a bien été publiée !");
@@ -85,7 +93,7 @@ export default function AddPicture() {
           </Form.Group>
 
           <Form.Group controlId="formPicture" style={{marginBottom: '5%'}}>
-            <Form.Label>
+            <Form.Label className="label">
               Photo
               <br />
             </Form.Label>
@@ -97,7 +105,7 @@ export default function AddPicture() {
           </Form.Group>
 
           <Form.Group controlId="formTags" style={{marginBottom: '5%'}}>
-            <Form.Label>
+            <Form.Label className="label">
               Tags
               <br />
             </Form.Label>
@@ -125,7 +133,7 @@ export default function AddPicture() {
           </Form.Group>
 
           <Form.Group controlId="formDiffusion" style={{marginBottom: '5%'}}>
-            <Form.Label>
+            <Form.Label className="label">
               Liste de diffusion :
               <br />
             </Form.Label>
@@ -152,7 +160,7 @@ export default function AddPicture() {
           </Form.Group>
 
           <Form.Group controlId="formCaption">
-            <Form.Label>
+            <Form.Label className="label">
               Description
               <br />
             </Form.Label>
