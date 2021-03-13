@@ -1,3 +1,18 @@
+/* @font-face{
+    font-family: 'Plento';
+    src: url("PLENTO.ttf");
+}
+
+@font-face{
+    font-family: 'Bahagia';
+    src: url("Bahagia.ttf");
+}
+
+@font-face{
+    font-family: 'Calibri';
+    src: url("Calibri.ttf");
+} */
+
 .login {
     text-align: center;
     color: #3F3F3F;
@@ -6,12 +21,15 @@
 .login h1 {
     margin-top: 3%;
     margin-bottom: 5%;
+    font-family: Plento;
+    font-size: 4cm;
 }
 
 .login .text {
     margin-left: 35%;
     margin-right: 35%;
     width: 30%;
+    font-family: Calibri;
 } 
 
 .login .text:focus {
@@ -21,6 +39,8 @@
 .login .button {
     background-color: #FE9802;
     border-color: black;
+    font-family: Bahagia;
+    font-size: 1cm;
 }
 
 .login .button:hover {
