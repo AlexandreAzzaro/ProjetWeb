@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Image } from 'react-bootstrap';
 import profile from './img/profile.svg';
 import logout from './img/logout.svg';
@@ -34,8 +34,8 @@ export default function Menu () {
                 <Image
                     className="toProfile" 
                     src={profile} 
-                    width='35px'
-                    height='35px'/>
+                    width='40px'
+                    height='40px'/>
             </NavLink>
 
             <NavLink className="toLogin"
@@ -46,8 +46,8 @@ export default function Menu () {
                     marginLeft: '5%'
                 }}>
                 <Image src={logout} 
-                    width='35px'
-                    height='35px'/>
+                    width='40px'
+                    height='40px'/>
             </NavLink>     
         </div>
     );
