@@ -4,6 +4,7 @@ import { useHistory } from 'react-router-dom';
 import {Form, Button} from 'react-bootstrap';
 
 
+
 export default function Login() {
     const usernameInput = useRef(null),
 		passwordInput = useRef(null);
@@ -12,34 +13,30 @@ export default function Login() {
 
     const [errorMessage, setErrorMessage] = useState("");
 
-    console.log("id : " + localStorage.getItem('id'));
     console.log("username : " + localStorage.getItem('username'));
     console.log("loggedIn : " + localStorage.getItem('loggedIn'));
 
     async function onSubmitLogin(event) {
         
-
         let username = usernameInput.current.value;
         let password = passwordInput.current.value;
-        let id;
 
         event.preventDefault();
 
-         const form = {
-             username: username,
-             password: password
-         }
+        //  const form = {
+        //      username: username,
+        //      password: password
+        //  }
 
-        await fetch('http://localhost:5000/api/user/login',{
-             method:'POST',
-             body:JSON.stringify(form),
-             headers: {"Content-type": "application/json; charset=UTF-8"}
-         })
-             .then(response => console.log(JSON.stringify(response)))
+        // await fetch('http://localhost:5000/api/user/login',{
+        //      method:'POST',
+        //      body:JSON.stringify(form),
+        //      headers: {"Content-type": "application/json; charset=UTF-8"}
+        //  })
+        //      .then(response => console.log(JSON.stringify(response)))
         
-        if(id) {
+        if(username === "toto" && password === "toto") {
             
-            localStorage.setItem("id",id);
             localStorage.setItem("username",username);
             localStorage.setItem("loggedIn",'true');
 
@@ -66,25 +63,26 @@ export default function Login() {
 
             <Form className="loginForm" onSubmit={onSubmitLogin}>
                 <Form.Group controlId="formUsername">
-                    <Form.Label>Nom d'utilisateur<br/></Form.Label>
-                    <Form.Control type="text" placeholder="Entrez votre pseudo" ref={usernameInput} required />
+                    <Form.Label className="label">Nom d'utilisateur<br/></Form.Label>
+                    <Form.Control className="text" type="text" placeholder="Entrez votre pseudo" ref={usernameInput} required />
                 </Form.Group>
 
                 <Form.Group controlId="formPassword">
-                    <Form.Label>Mot de passe<br/></Form.Label>
-                    <Form.Control type="password" placeholder="Entrez votre mot de passe" ref={passwordInput} required />
+                    <Form.Label className="label">Mot de passe<br/></Form.Label>
+                    <Form.Control className="text" type="password" placeholder="Entrez votre mot de passe" ref={passwordInput} required />
                 </Form.Group>
+                
 
                 <Form.Text className="formError">
-                    {errorMessage}<br/>
+                    {errorMessage}
                 </Form.Text>
-
-                <Button variant="primary" type="submit">
+                <br/>
+                <Button className="button" variant="primary" type="submit">
                     Se connecter
                 </Button>
-            </Form>
+            </Form><br/>
             <Form onSubmit={onSubmitSubscribe}>
-                <Button variant="primary" type="submit">
+                <Button className="button" variant="primary" type="submit">
                         S'inscrire
                 </Button>
             </Form>

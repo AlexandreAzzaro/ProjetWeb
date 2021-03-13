@@ -1,3 +1,28 @@
-.container {
+.profile {
+    text-align: center;
+}
+
+.profile-container {
+    border: solid 3px #FE9802;
+    border-radius: 3%;
+    margin: 0% 30% 3% 30%;
+    padding: 5% 0% 5% 0%;
+    color: #D9D9D9;
+    background-color: #3F3F3F;
+}
+
+.logo {
+    filter: invert(55%) sepia(96%) saturate(903%) hue-rotate(358deg) brightness(101%) contrast(102%);
+    margin-right: 8px;  
+}
+
+.profile h1 {
     margin-top: 10%;
+    margin-bottom: 10%;
+
+}
+
+.profile-logo {
+    margin-right: 1%;
+    filter: invert(55%) sepia(96%) saturate(903%) hue-rotate(358deg) brightness(101%) contrast(102%);
 }

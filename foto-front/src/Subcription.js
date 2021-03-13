@@ -53,7 +53,7 @@ export default function Subcription() {
   }
 
   return (
-    <div className="login">
+    <div className="subscription">
       <h1>Foto</h1>
 
       <Form className="subscribeForm" onSubmit={onSubmitSubscribe}>
@@ -63,6 +63,7 @@ export default function Subcription() {
             <br />
           </Form.Label>
           <Form.Control
+            className="text"
             type="text"
             placeholder="Entrez votre pseudo"
             ref={usernameInput}
@@ -77,6 +78,7 @@ export default function Subcription() {
           </Form.Label>
           <Form.Control
             type="email"
+            className="text"
             placeholder="Entrez votre email"
             ref={emailInput}
             required
@@ -86,9 +88,9 @@ export default function Subcription() {
         <Form.Group controlId="formBirthday">
           <Form.Label>
             Date de naissance
-            <br />
-          </Form.Label>
+          </Form.Label><br/>
           <DatePicker
+          className="date"
             selected={birthdayInput}
             onChange={(date) => setBirthdayInput(date)}
           />
@@ -100,6 +102,7 @@ export default function Subcription() {
             <br />
           </Form.Label>
           <Form.Control
+          className="text"
             type="password"
             placeholder="Entrez votre mot de passe"
             ref={passwordInput}
@@ -113,6 +116,7 @@ export default function Subcription() {
             <br />
           </Form.Label>
           <Form.Control
+          className="text"
             type="password"
             placeholder="Entrez de nouveau votre mot de passe"
             ref={verificationPasswordInput}
@@ -122,10 +126,9 @@ export default function Subcription() {
 
         <Form.Text className="formError">
           {errorMessage}
-          <br />
         </Form.Text>
-
-        <Button variant="primary" type="submit">
+        <br/>
+        <Button className="button" variant="primary" type="submit">
           S'inscrire
         </Button>
       </Form>

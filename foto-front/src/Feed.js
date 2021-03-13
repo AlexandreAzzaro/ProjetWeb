@@ -2,10 +2,10 @@ import React from 'react';
 import './css/Feed.css';
 import Menu from './Menu';
 import { Redirect } from 'react-router-dom';
+import PostList from './PostList';
 
 export default function Feed() {
-    
-    console.log("id : " + localStorage.getItem('id'));
+
     console.log("username : " + localStorage.getItem('username'));
     console.log("loggedIn : " + localStorage.getItem('loggedIn'));
 
@@ -14,9 +14,9 @@ export default function Feed() {
     }
 
     return (
-        <div >
-            <Menu currentPage='feed'/>
-            <h1>feeeeeeeeeeed</h1>
+        <div className="feed">
+            <Menu />
+            <PostList />
         </div>
     );
     
