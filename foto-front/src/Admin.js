@@ -5,53 +5,81 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import SyncIcon from '@material-ui/icons/Sync';
 import Menu from './Menu';
 import { Redirect } from 'react-router-dom';
+import { Form } from 'react-bootstrap';
 
 class Table extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            data: [],
+            passWord: ""
+        };
+    }
+
+    passwordInput;
+
+    componentDidMount() {
+        this.getAllUser();
+    }
+
+    async getAllUser() {
+        // GET request using fetch with async/await
+        await fetch('http://localhost:5000/api/user/getAllUsr')
+            .then(response => response.json())
+            .then(result => {
+                this.setState({ data: result })
+            })
+        // console.log(data);
+        // data = JSON.stringify(data);
+    };
+
+    remove = (user) => {
+        console.log("Remove", user)
+    }
+
+    changepw = (user) => {
+        const input = document.getElementById("newMdp"+user);
+        const newPW = input.value;
+        if (newPW === "") {
+            alert("Password can not be empty !");
+            return;
+        }
+        input.value = "";
+        console.log("New password", newPW);
+        console.log("Change password", user);
+    }
 
     render() {
 
-        function remove(user) {
-            console.log("Remove", user)
-        }
-
-        function changepw(user) {
-            console.log("Change password", user)
-        }
-
-        const data = [
-            {
-                username: "Alexandre",
-                password: "toto",
-                mail: "alexandre.ansel@gmail.com"
-            },
-            {
-                username: "Alexandre",
-                password: "titi",
-                mail: "alexandre.azzaro@gmail.com"
-
-            },
-            {
-                username: "Julien",
-                password: "tata",
-                mail: "julien.dupuis@gmail.com"
-            },
-
-        ]
-
         let rows = [];
 
-        data.map((user) =>
+        const users = this.state.data;
+
+        // console.log(users)
+
+        users.map((user) =>
             rows.push(
                 <tr>
                     <td>{user.username}</td>
-                    <td>{user.mail}</td>
+                    <td>{user.email}</td>
                     <td>
-                        <IconButton aria-label="delete" onClick={() => changepw(user.username)}>
-                            <SyncIcon fontSize="large" />
-                        </IconButton>
+
+                        <Form className="changeMdp">
+                            <Form.Control
+                                id={"newMdp"+user.username}
+                                className="text"
+                                placeholder="Nouveau mot de passe"
+                                required
+                            ></Form.Control>
+
+                            <IconButton aria-label="change" onClick={() => this.changepw(user.username)}>
+                                <SyncIcon fontSize="large" />
+                            </IconButton>
+                        </Form>
                     </td>
                     <td>
-                        <IconButton aria-label="delete" onClick={() => remove(user.username)}>
+                        <IconButton aria-label="delete" onClick={() => this.remove(user.username)}>
                             <DeleteIcon fontSize="large" />
                         </IconButton>
                     </td>
@@ -101,15 +129,15 @@ export default function Admin() {
     console.log("username : " + localStorage.getItem('username'));
     console.log("loggedIn : " + localStorage.getItem('loggedIn'));
 
-    if(localStorage.getItem('loggedIn') !== 'true') {
-    // if (localStorage.getItem('loggedIn') === 'true') {
+    if (localStorage.getItem('loggedIn') !== 'true') {
+        // if (localStorage.getItem('loggedIn') === 'true') {
         return <Redirect to="/login" />
     }
 
     return (
         <div >
             <Menu currentPage='admin' />
-            <h1>Admin Panel</h1>
+            <h1 className="adminTitle">Admin Panel</h1>
             <Table />
 
         </div>

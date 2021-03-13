@@ -1,5 +1,21 @@
+@font-face{
+  font-family: 'Plento';
+  src: url("../fonts/PLENTO.ttf");
+}
+
+@font-face{
+  font-family: 'Bahagia';
+  src: url("../fonts/Bahagia.ttf");
+}
+
+@font-face{
+  font-family: 'Calibri';
+  src: url("../fonts/Calibri.ttf");
+}
+
 .App {
   text-align: center;
+  font-family: 'Calibri';
 }
 
 .App-logo {
@@ -36,3 +52,4 @@
     transform: rotate(360deg);
   }
 }
+

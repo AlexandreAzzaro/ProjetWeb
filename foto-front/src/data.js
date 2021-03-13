@@ -1,7 +1,7 @@
 const data = [
     {
         id: 'zugfytzgzj',
-        user: 'toto',
+        username: 'toto',
         title: 'Image random',
         photo: 'https://blog.groupeastek.com/wp-content/uploads/2015/10/observatoires-photographiques-du-paysage.jpeg',
         caption: 'La meilleure image du monde bon je vais commencer à écrire un truc vraiment long pour voir comment le site réagi haha c\'est vraiment trop bien youhou coucou maman je passe à la télé je commence à plus trop savoir quoi dire haha',
@@ -13,7 +13,7 @@ const data = [
     },
     {
         id: 'yuazrvdrduish',
-        user: 'toto',
+        username: 'toto',
         title: 'Image random',
         photo: 'https://www.citationbonheur.fr/wp-content/uploads/2018/09/L_influence_du_paysage_sur_le_bonheur.jpg',
         caption: 'La meilleure image du monde',
@@ -25,7 +25,7 @@ const data = [
     },
     {
         id: 'jijgzquzhzozjeie',
-        user: 'tata',
+        username: 'tata',
         title: 'Image random',
         photo: 'http://data.pixiz.com/output/user/frame/preview/api/big/2/3/4/7/3467432_16fcb.jpg',
         caption: 'La meilleure image du monde',
@@ -37,7 +37,7 @@ const data = [
     },
     {
         id: 'jkgezuhgezevzueguzegzu',
-        user: 'toto',
+        username: 'toto',
         title: 'Image random',
         photo: 'https://blog.groupeastek.com/wp-content/uploads/2015/10/observatoires-photographiques-du-paysage.jpeg',
         caption: 'La meilleure image du monde',
@@ -49,7 +49,7 @@ const data = [
     },
     {
         id: 'khezgugeyeugzhezhiu',
-        user: 'tata',
+        username: 'tata',
         title: 'Image random',
         photo: 'https://blog.groupeastek.com/wp-content/uploads/2015/10/observatoires-photographiques-du-paysage.jpeg',
         caption: 'La meilleure image du monde',
@@ -61,7 +61,7 @@ const data = [
     },
     {
         id: 'kheijgenejken',
-        user: 'toto',
+        username: 'toto',
         title: 'Image random',
         photo: 'http://data.pixiz.com/output/user/frame/preview/api/big/2/3/4/7/3467432_16fcb.jpg',
         caption: 'La meilleure image du monde',
@@ -73,7 +73,7 @@ const data = [
     },
     {
         id: 'lmjdshjdfbdhbdh',
-        user: 'toto',
+        username: 'toto',
         title: 'Image random',
         photo: 'https://www.citationbonheur.fr/wp-content/uploads/2018/09/L_influence_du_paysage_sur_le_bonheur.jpg',
         caption: 'La meilleure image du monde',
@@ -85,7 +85,7 @@ const data = [
     },
     {
         id: 'lkdskjbdhdghhdssdj',
-        user: 'toto',
+        username: 'toto',
         title: 'Image random',
         photo: 'https://blog.groupeastek.com/wp-content/uploads/2015/10/observatoires-photographiques-du-paysage.jpeg',
         caption: 'La meilleure image du monde',
@@ -97,7 +97,7 @@ const data = [
     },
     {
         id: 'kojezhiuedhejkehbiez',
-        user: 'toto',
+        username: 'toto',
         title: 'Image random',
         photo: 'https://www.citationbonheur.fr/wp-content/uploads/2018/09/L_influence_du_paysage_sur_le_bonheur.jpg',
         caption: 'La meilleure image du monde',

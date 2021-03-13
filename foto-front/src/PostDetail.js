@@ -35,13 +35,13 @@ export default function PostDetail() {
                         to="/feed">
                         <Image 
                             src = {back}
-                            width='35px'
-                            height='35px'/>
+                            width='40px'
+                            height='40px'/>
                     </NavLink>
                 </Row>
                 <Row>
                     <Col>
-                        <h4 className='title'>@{post.user} - {post.title}</h4>
+                        <h4 className='title'><b>@{post.username}</b> - {post.title}</h4>
                     </Col>
                 </Row>
                 <Row className='image' style={{marginLeft: '10%'}}>
@@ -72,17 +72,17 @@ export default function PostDetail() {
                     </Col>
                 </Row>
                 <Row>
-                    <h6>Tags :</h6> 
+                    <span className='subTitle'>Tags :</span> 
                 </Row>
                 <Row style={{marginBottom: '5%'}}>
                 {post.tags.map(tag => (
-                        <span>{tag}&nbsp;</span>
+                        <span>#{tag}&nbsp;</span>
                     ))}
                 </Row>
                 <Row>
-                    <h6>Description :</h6>
+                    <span className="subTitle">Description :</span>
                 </Row>
-                <Row style={{textAlign:'justify'}}>
+                <Row style={{textAlign:'justify', marginBottom: '3%'}}>
                     <p>{post.caption}</p>
                 </Row>
             </Container>

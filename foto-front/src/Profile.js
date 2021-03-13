@@ -4,7 +4,8 @@ import './css/Profile.css';
 import Menu from './Menu';
 import profile from './img/profile.svg';
 import add from './img/add.svg';
-import image from './img/image.svg'
+import image from './img/image.svg';
+import like from './img/like.svg';
 import { NavLink, Redirect } from 'react-router-dom';
 
 export default function Profile() {
@@ -28,8 +29,8 @@ export default function Profile() {
                     src={profile} 
                     width='50px'
                     height='50px'/>
-                {'@' + localStorage.getItem('username')} <br/><br/>
-                    
+                <b>{'@' + localStorage.getItem('username')} </b><br/><br/>
+                
                 <NavLink 
                     to="/profile" 
                     style={{
@@ -42,6 +43,20 @@ export default function Profile() {
                         width='30px'
                         height='30px'/>
                     Vos images
+                </NavLink><br/><br/>
+
+                <NavLink 
+                    to="/profile" 
+                    style={{
+                        textDecoration: 'none',
+                        color: '#D9D9D9'
+                    }}>
+                    <Image 
+                        className="logo"
+                        src={like} 
+                        width='30px'
+                        height='30px'/>
+                    Vos likes
                 </NavLink><br/><br/>
                 
                 <NavLink 

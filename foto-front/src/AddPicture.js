@@ -69,8 +69,8 @@ export default function AddPicture() {
         <h1>Ajouter une photo</h1>
   
         <Form className="subscribeForm" onSubmit={onSubmitAddPicture}>
-          
-        <Form.Group controlId="formTitle">
+        <div className="subscribe-border">
+        <Form.Group controlId="formTitle" style={{marginBottom: '5%'}}>
             <Form.Label className="label">
               Titre
               <br />
@@ -84,7 +84,7 @@ export default function AddPicture() {
             />
           </Form.Group>
 
-          <Form.Group controlId="formPicture">
+          <Form.Group controlId="formPicture" style={{marginBottom: '5%'}}>
             <Form.Label>
               Photo
               <br />
@@ -96,7 +96,7 @@ export default function AddPicture() {
            />
           </Form.Group>
 
-          <Form.Group controlId="formTags">
+          <Form.Group controlId="formTags" style={{marginBottom: '5%'}}>
             <Form.Label>
               Tags
               <br />
@@ -124,7 +124,7 @@ export default function AddPicture() {
             />
           </Form.Group>
 
-          <Form.Group controlId="formDiffusion">
+          <Form.Group controlId="formDiffusion" style={{marginBottom: '5%'}}>
             <Form.Label>
               Liste de diffusion :
               <br />
@@ -165,8 +165,8 @@ export default function AddPicture() {
               required
             />
           </Form.Group>
-
-          <Button className="button" variant="primary" type="submit">
+          </div>
+          <Button className="button" style={{fontSize: '2em'}} variant="primary" type="submit">
             Publier
           </Button>
         </Form>
