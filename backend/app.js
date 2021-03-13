@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import postRoute from "./routes/postImg.js"
 import userRoute from "./routes/User.js"
+import path from 'path'
 import cors from 'cors'
 //import MongoClient from 'mongodb'
 const app = express();
@@ -39,5 +40,6 @@ app.use(bodyParser.json());
 app.use('/api/postImg', postRoute);
 app.use('/api/auth', userRoute);
 app.use('/api/user', userRoute);
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 export default app;

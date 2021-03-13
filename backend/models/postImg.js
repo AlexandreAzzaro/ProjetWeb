@@ -8,7 +8,7 @@ const postSchema = mongoose.Schema({
   dislikes: { type: Number },
   title: { type: String },
   imageUrl: { type: String, required: true },
-  creation_date: {type : Date, required: true},
+  //creation_date: {type : Date, required: true},
   tags: { type: [String], required: true },
 });
 

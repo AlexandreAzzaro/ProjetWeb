@@ -7,10 +7,11 @@ const ctrl = new postCtrl();
 //const authent = new auth();
 const router = express.Router();
 
-router.get('/', ctrl.getAllImg);
-router.post('/', multer, ctrl.createImg);
-router.get('/:id', ctrl.getOneImg);
-router.put('/:id', ctrl.modifyImg);
-router.delete('/:id', ctrl.deleteImg);
+router.get('/getAllImg', ctrl.getAllImg);
+router.get('/getAllImgByUser', ctrl.getAllImgByUser);
+router.post('/createImg', multer, ctrl.createImg);
+router.get('/getOneImg/:id', ctrl.getOneImg);
+router.put('/modifyImg/:id', ctrl.modifyImg);
+router.delete('/deleteImg/:id', ctrl.deleteImg);
 
 export default router;  
