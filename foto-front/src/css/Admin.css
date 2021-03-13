@@ -1,6 +1,7 @@
-h1 {
+.adminTitle {
     margin-top: 10%;
     text-align: center;
+    margin-bottom: 3%;
 }
 table{
     font-size: 1em;
