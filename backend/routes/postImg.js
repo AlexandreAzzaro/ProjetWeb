@@ -1,7 +1,7 @@
 import express from "express";
 import postCtrl from "../controllers/postImg.js";
 //import auth from '../middleware/auth.js';
-import multer from '../middleware/multer-config';
+import multer from '../middleware/upload.js';
 
 const ctrl = new postCtrl();
 //const authent = new auth();

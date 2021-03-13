@@ -57,7 +57,7 @@ export default class userCtrl {
         if (!valid) {
           return res.status(401).json({ error: "mot de passe incorrect" });
         }
-        console.log(user._id)
+        console.log(user._id);
         res.status(200).json({ userId: user._id });
         //console.log(userId)
       } catch (error) {
@@ -70,23 +70,52 @@ export default class userCtrl {
 
   isUsernameExist = async (req, res, next) => {
     try {
-      await userSchema.findOne({
+      let usrName = await userSchema.findOne({
         username: req.params.username,
       });
+      if (!usrName) {
+        throw (false);
+     }
       return res.status(200).json(true);
     } catch (error) {
-      res.status(404).json(false);
+      return res.status(404).json(error);
     }
   };
 
   isemailExist = async (req, res, next) => {
     try {
-      await userSchema.findOne({
+      let usrMail = await userSchema.findOne({
         email: req.params.email,
       });
+      if (!usrMail) {
+        throw (false);
+     }
       return res.status(200).json(true);
     } catch (error) {
-      res.status(404).json(error);
+      return res.status(404).json(error);
+    }
+  };
+
+  getOneUsr = async (req, res, next) => {
+    try {
+      let oneUsr = await userSchema.findOne({
+        username: req.params.username,
+      });
+      if (!oneUsr) {
+        throw ("L'utilisateur n'existe pas");
+     }
+      return res.status(200).json(oneUsr);
+    } catch (error) {
+      return res.status(404).json(error);
+    }
+  };
+
+  getAllUsr = async (req, res, next) => {
+    try {
+      let allUsr = await userSchema.find();
+      return res.status(200).json(allUsr);
+    } catch (error) {
+      return res.status(400).json(error);
     }
   };
 }

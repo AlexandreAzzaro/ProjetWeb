@@ -2,8 +2,10 @@ import PostImg from "../models/postImg.js";
 
 export default class postCtrl {
   createImg = (req, res, next) => {
+    const imgObject = JSON.parse(req.body.postImg)
     const postImg = new PostImg({
-      ...req.body
+      ...req.body,
+      imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     });
     postImg
       .save()
