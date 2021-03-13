@@ -5,9 +5,9 @@ const ctrl = new userCtrl();
 const router = express.Router(); 
 
 router.post('/signup', ctrl.signup);
-router.get('/login', ctrl.login);
+router.post('/login', ctrl.login);
 router.get('/isUsernameExist/:username', ctrl.isUsernameExist);
-router.get('/isemailExist/:email', ctrl.isemailExist);
+router.get('/isEmailExist/:email', ctrl.isEmailExist);
 router.get('/getOneUsr/:username', ctrl.getOneUsr);
 router.get('/getAllUsr', ctrl.getAllUsr);
 

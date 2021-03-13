@@ -5,7 +5,7 @@ export default class postCtrl {
     const imgObject = JSON.parse(req.body.postImg)
     const postImg = new PostImg({
       ...req.body,
-      imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+      //imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     });
     postImg
       .save()
@@ -40,6 +40,14 @@ export default class postCtrl {
 
   getAllImg = (req, res, next) => {
     PostImg.find()
+      .then((postImg) => res.status(200).json(postImg))
+      .catch((error) => res.status(400).json(error));
+  };
+
+  getAllImgByUser = (req, res, next) => {
+    PostImg.find({
+      username: req.params.username
+    })
       .then((postImg) => res.status(200).json(postImg))
       .catch((error) => res.status(400).json(error));
   };

@@ -4,8 +4,8 @@ import userSchema from "../models/User.js";
 
 export default class userCtrl {
   signup = async (req, res, next) => {
-    let hashpass = await bcrypt.hash(req.body.password, 10);
-    req.body.password = hashpass;
+    //let hashpass = await bcrypt.hash(req.body.password, 10);
+    //req.body.password = hashpass;
     const user = new userSchema({
       ...req.body,
     });
@@ -46,7 +46,7 @@ export default class userCtrl {
       .catch((error) => res.status(500).json({ error }));
   };*/
 
-  login = async (req, res, next) => {
+  /*login = async (req, res, next) => {
     try {
       let user = await userSchema.findOne({ username: req.body.username });
       if (!user) {
@@ -55,16 +55,41 @@ export default class userCtrl {
       try {
         await bcrypt.compare(req.body.password, user.password);
         if (!valid) {
-          return res.status(401).json({ error: "mot de passe incorrect" });
+          return res.status(401).json(false);
         }
-        console.log(user._id);
-        res.status(200).json({ userId: user._id });
+        return res.status(200).json(true);
         //console.log(userId)
       } catch (error) {
-        res.status(500).json(error);
+        return res.status(500).json(error);
       }
     } catch (error) {
-      res.status(500).json(error);
+      return res.status(500).json(error);
+    }
+  };*/
+
+  login = async (req, res, next) => {
+    let oneUsr;
+    try {
+      oneUsr = await userSchema.findOne({
+        username: req.body.username,
+      });
+      console.log(oneUsr)
+      if(!oneUsr){
+        throw ("l'utilisateur n'existe pas")
+      }
+      return res.json(true)
+      /*try {
+        await bcrypt.compare(req.body.password, user.password);
+        if (!valid) {
+          return res.status(401).json(false);
+        }
+        return res.status(200).json(true);
+        //console.log(userId)
+      } catch (error) {
+        return res.status(500).json(error);
+      }*/
+    } catch (error) {
+      return res.status(500).json(error);
     }
   };
 
@@ -82,7 +107,7 @@ export default class userCtrl {
     }
   };
 
-  isemailExist = async (req, res, next) => {
+  isEmailExist = async (req, res, next) => {
     try {
       let usrMail = await userSchema.findOne({
         email: req.params.email,
@@ -117,5 +142,16 @@ export default class userCtrl {
     } catch (error) {
       return res.status(400).json(error);
     }
+  };
+
+  modifyUsr = (req, res, next) => {
+    const newUsr = new userSchema({
+      ...req.body
+    });
+    userSchema.updateOne({ _id: req.params.id }, newUsr)
+      .then(() =>
+        res.status(201).json({ message: "User updated successfully!" })
+      )
+      .catch((error) => res.status(400).json(error));
   };
 }

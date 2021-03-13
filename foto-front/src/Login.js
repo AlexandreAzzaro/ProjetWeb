@@ -23,19 +23,17 @@ export default function Login() {
 
         event.preventDefault();
 
-        //  const form = {
-        //      username: username,
-        //      password: password
-        //  }
+          const form = {
+              username: username,
+              password: password
+          }
 
-        // await fetch('http://localhost:5000/api/user/login',{
-        //      method:'POST',
-        //      body:JSON.stringify(form),
-        //      headers: {"Content-type": "application/json; charset=UTF-8"}
-        //  })
-        //      .then(response => console.log(JSON.stringify(response)))
-        
-        if(username === "toto" && password === "toto") {
+         await fetch('http://localhost:5000/api/user/login',{
+              method:'POST',
+              body:JSON.stringify(form),
+              headers: {"Content-type": "application/json; charset=UTF-8"}
+          })
+        if(1) {
             
             localStorage.setItem("username",username);
             localStorage.setItem("loggedIn",'true');
