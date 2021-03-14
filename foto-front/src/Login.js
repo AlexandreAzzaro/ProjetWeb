@@ -13,10 +13,7 @@ export default function Login() {
 
     const [errorMessage, setErrorMessage] = useState("");
 
-    console.log("username : " + localStorage.getItem('username'));
-    console.log("loggedIn : " + localStorage.getItem('loggedIn'));
-
-    async function onSubmitLogin(event) {
+    async function onSubmitLogin (event) {
         
         let username = usernameInput.current.value;
         let password = passwordInput.current.value;

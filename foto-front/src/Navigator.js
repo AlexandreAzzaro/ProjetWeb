@@ -7,6 +7,7 @@ import Subcription from './Subcription';
 import Admin from './Admin'
 import AddPicture from './AddPicture';
 import PostDetail from './PostDetail';
+import YourImages from './YourImages';
 
 
 export default function Navigator () {
@@ -40,8 +41,16 @@ export default function Navigator () {
                 <AddPicture />
             </Route>
 
+            <Route exact path="/profile/yourImages">
+                <YourImages />
+            </Route>
+
             <Route exact path="/post/:id">
-				<PostDetail />
+				<PostDetail previous='feed'/>
+			</Route>
+
+            <Route exact path="/profile/post/:id">
+				<PostDetail previous='profile/yourImages'/>
 			</Route>
 
         </Switch>

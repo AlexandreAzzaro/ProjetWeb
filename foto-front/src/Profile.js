@@ -29,7 +29,7 @@ export default function Profile() {
                 <b>{'@' + localStorage.getItem('username')} </b><br/><br/>
                 
                 <NavLink 
-                    to="/profile" 
+                    to="/profile/yourImages" 
                     style={{
                         textDecoration: 'none',
                         color: '#D9D9D9'

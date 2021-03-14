@@ -1,19 +1,19 @@
 import React from 'react';
-import './css/Feed.css';
+import './css/YourImages.css';
 import Menu from './Menu';
 import { Redirect } from 'react-router-dom';
 import PostList from './PostList';
 
-export default function Feed() {
+export default function YourImages() {
 
-    if (localStorage.getItem('loggedIn') !== 'true') {
+    if(localStorage.getItem('loggedIn') !== 'true') {
         return <Redirect to="/login" />
     }
 
     return (
-        <div className="feed">
+        <div className="yourImages">
             <Menu />
-            <PostList type='feed' title='Feed'/>
+            <PostList type='yourImages' title='Vos images' />
         </div>
     );
     

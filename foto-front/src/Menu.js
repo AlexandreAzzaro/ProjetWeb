@@ -9,9 +9,8 @@ import './css/Menu.css';
 export default function Menu () {
 
     const [admin,setAdmin] = useState("");
-    const username = localStorage.getItem('username')
 
-    useEffect(() => {
+    useEffect( () => {
 		if(localStorage.getItem('admin') === 'true') {
             setAdmin(<NavLink className="toAdmin"
             to="/admin" 

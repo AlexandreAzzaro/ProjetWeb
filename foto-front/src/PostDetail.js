@@ -1,17 +1,16 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
 import Menu from "./Menu";
 import back from "./img/back.svg"
 import './css/PostDetail.css';
-import data from './data'
 import { Container, Row, Image, Col } from 'react-bootstrap';
 import like from './img/like.svg';
 import dislike from './img/dislike.svg';
+import trash from './img/trash.svg';
 
-export default function PostDetail() {
+export default function PostDetail({previous}) {
 
     const { id } = useParams();
-    
     const [post, setPost] = useState({});
     
     useEffect(() => {
@@ -20,6 +19,28 @@ export default function PostDetail() {
 			.then(setPost);
 	}, []);
 
+    let delButton = "";
+
+    function onClickDeletePost() {
+        fetch(`http://localhost:5000/api/postImg/deleteImg/${id}`, {
+            method: 'DELETE',
+        })
+    }
+
+    if(previous === "profile/yourImages") {
+        delButton = 
+            <NavLink 
+                className='logo'
+                style={{marginLeft:'5%'}}
+                onClick={onClickDeletePost}
+                to={"/" + previous}>
+                <Image 
+                    src = {trash}
+                    width='40px'
+                    height='40px'/>
+            </NavLink>;
+    }
+
     return (
         <div className='postDetail'>
             <Menu /><br/><br/><br/><br/>
@@ -27,7 +48,7 @@ export default function PostDetail() {
                 <Row>
                     <NavLink 
                         className='back-button'
-                        to="/feed">
+                        to={"/" + previous}>
                         <Image 
                             src = {back}
                             width='40px'
@@ -65,6 +86,7 @@ export default function PostDetail() {
                     
                     <Col>
                         <b>{post.creation_date}</b>
+                        {delButton}
                     </Col>
                 </Row>
                 <Row>
