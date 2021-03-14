@@ -17,8 +17,20 @@ export default function AddPicture() {
   let countTags = 0;
   let countPerson = 0;
 
-  async function loadImage(e) {
-    setImg(e.target.files[0]);
+  let photoUrl = "";
+  
+  function uploadfile(event) {
+
+    var input = document.querySelector('input[type="file"]')
+
+    var data = new FormData()
+    
+    data.append('photo', input.files[0])
+
+    fetch("http://localhost:5000/uploadfile", {
+      method: "POST",
+      body: data 
+    });
   }
 
   async function onSubmitAddPicture(event) {
@@ -37,7 +49,7 @@ export default function AddPicture() {
     const form = {
       username: username,
       title: title,
-      imageUrl: "https://blog.groupeastek.com/wp-content/uploads/2015/10/observatoires-photographiques-du-paysage.jpeg", // faut changer ça
+      imageUrl: "C:/Users/juju-/Documents/ISEN/ProjetWeb/backend/uploads/images/98c6e90557e64a5c296d1951f035571b", 
       tags: tags,
       diffusion: diffusion,
       caption: caption,
@@ -110,12 +122,13 @@ export default function AddPicture() {
               Photo
               <br />
             </Form.Label>
-            <Form.File
-              onChange={loadImage}
+            <input id="image-file" type="file" onChange={uploadfile} />
+            {/* <Form.File
               className="text"
               ref={photoInput}
+              onChange={uploadfile}
               required
-            />
+            /> */}
           </Form.Group>
 
           <Form.Group controlId="formTags" style={{ marginBottom: "5%" }}>

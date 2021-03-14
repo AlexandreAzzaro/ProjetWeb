@@ -1,6 +1,10 @@
 import { createServer } from "http";
+import { createRequire } from 'module';
+const require = createRequire(import.meta.url);
 import http from "http";
 import app from "./app.js";
+const multer = require('multer');
+const upload = multer({dest: './uploads/images'});
 
 const normalizePort = (value) => {
   const port = parseInt(value, 10);
@@ -46,5 +50,16 @@ server.on("listening", () => {
   const bind = typeof address === "string" ? "pipe " + address : "port " + port;
   console.log("Listening on " + bind);
 });
+
+app.post('/uploadfile', upload.single('photo'), (req, res, next) => {
+  const file = req.file
+  if (!file) {
+    const error = new Error('Please upload a file')
+    error.httpStatusCode = 400
+    return next(error)
+  }
+    res.send(file)
+  
+})
 
 server.listen(port);
