@@ -46,8 +46,8 @@ export default function PostDetail({previous}) {
                 to={"/" + previous}>
                 <Image 
                     src = {trash}
-                    width='40px'
-                    height='40px'/>
+                    width='30px'
+                    height='30px'/>
             </NavLink>;
     }
 
