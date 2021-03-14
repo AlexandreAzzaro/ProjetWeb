@@ -121,10 +121,6 @@ class Table extends React.Component {
 
 export default function Admin() {
 
-    console.log("id : " + localStorage.getItem('id'));
-    console.log("username : " + localStorage.getItem('username'));
-    console.log("loggedIn : " + localStorage.getItem('loggedIn'));
-
     if (localStorage.getItem('loggedIn') !== 'true') {
         return <Redirect to="/login" />
     }
