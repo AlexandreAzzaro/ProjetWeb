@@ -51,7 +51,7 @@ export default function AddPicture() {
     await fetch("http://localhost:5000/api/postImg/createImg", {
       method: "POST",
       body: formData,
-      headers: { "Content-type": "multipart/form-data; charset=UTF-8" },
+      headers: { "Content-type": "application/json; multipart/form-data; charset=UTF-8" },
     });
 
     // requête au back

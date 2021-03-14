@@ -24,9 +24,9 @@ export default class userCtrl {
       let oneUsr = await userSchema.findOne({
         username: req.body.username,
       });
-      console.log(oneUsr)
-      if(oneUsr == null){
-        throw ("l'utilisateur n'existe pas")
+      console.log(oneUsr);
+      if (oneUsr == null) {
+        throw "l'utilisateur n'existe pas";
       }
       try {
         let valid = await bcrypt.compare(req.body.password, oneUsr.password);
@@ -48,8 +48,8 @@ export default class userCtrl {
         username: req.params.username,
       });
       if (!usrName) {
-        throw (false);
-     }
+        throw false;
+      }
       return res.status(200).json(true);
     } catch (error) {
       return res.status(404).json(error);
@@ -62,8 +62,8 @@ export default class userCtrl {
         email: req.params.email,
       });
       if (!usrMail) {
-        throw (false);
-     }
+        throw false;
+      }
       return res.status(200).json(true);
     } catch (error) {
       return res.status(404).json(error);
@@ -76,8 +76,8 @@ export default class userCtrl {
         username: req.params.username,
       });
       if (!oneUsr) {
-        throw ("L'utilisateur n'existe pas");
-     }
+        throw "L'utilisateur n'existe pas";
+      }
       return res.status(200).json(oneUsr);
     } catch (error) {
       return res.status(404).json(error);
@@ -95,12 +95,20 @@ export default class userCtrl {
 
   modifyUsr = (req, res, next) => {
     const newUsr = new userSchema({
-      ...req.body
+      ...req.body,
     });
-    userSchema.updateOne({ _id: req.params.id }, newUsr)
+    userSchema
+      .updateOne({ username: req.params.username }, newUsr)
       .then(() =>
         res.status(201).json({ message: "User updated successfully!" })
       )
+      .catch((error) => res.status(400).json(error));
+  };
+
+  deleteUsr = (req, res, next) => {
+    userSchema
+      .deleteOne({ username: req.params.username })
+      .then(() => res.status(200).json({ message: "User deleted!" }))
       .catch((error) => res.status(400).json(error));
   };
 
@@ -109,9 +117,9 @@ export default class userCtrl {
       let usrName = await userSchema.findOne({
         username: req.params.username,
       });
-     if(usrName.admin === false){
-       return res.status(401).json(false)
-     }
+      if (usrName.admin === false) {
+        return res.status(401).json(false);
+      }
       return res.status(200).json(true);
     } catch (error) {
       return res.status(404).json(error);
