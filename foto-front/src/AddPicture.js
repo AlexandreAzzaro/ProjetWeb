@@ -32,29 +32,24 @@ export default function AddPicture() {
       .value.split(";");
     const caption = captionInput.current.value;
 
-    //const formData = new FormData();
-    //formData.append('file', img)
     const form = {
       username: username,
       title: title,
-      imageUrl:
-        "https://blog.groupeastek.com/wp-content/uploads/2015/10/observatoires-photographiques-du-paysage.jpeg", // faut changer ça
+      imageUrl: "https://blog.groupeastek.com/wp-content/uploads/2015/10/observatoires-photographiques-du-paysage.jpeg", // faut changer ça
       tags: tags,
       diffusion: diffusion,
       caption: caption,
       likes: 0,
       dislikes: 0,
-      creation_date: Date.now(),
+      creation_date: Date.now()
     };
-    formData.append('data', JSON.stringify(form))
 
     await fetch("http://localhost:5000/api/postImg/createImg", {
       method: "POST",
-      body: form,
+      body: JSON.stringify(form),
       headers: { "Content-type": "application/json; charset=UTF-8" },
     });
 
-    // requête au back
     alert("Votre photo a bien été publiée !");
     push("/profile");
   }
