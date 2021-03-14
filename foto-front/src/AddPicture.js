@@ -33,7 +33,8 @@ export default function AddPicture() {
       diffusion: diffusion,
       caption: caption,
       likes: 0,
-      dislikes: 0
+      dislikes: 0,
+      creation_date: Date.now(),
     }
 
     await fetch("http://localhost:5000/api/postImg/createImg", {

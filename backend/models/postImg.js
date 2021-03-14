@@ -8,8 +8,8 @@ const postSchema = mongoose.Schema({
   dislikes: { type: Number },
   title: { type: String },
   imageUrl: { type: String },
-  creation_date: {type : Date},
   tags: { type: [String], required: true },
+  creation_date: {type : Date, required: true}, 
 });
 
 export default mongoose.model("PostImg", postSchema);
