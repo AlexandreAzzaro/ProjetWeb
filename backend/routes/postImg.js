@@ -8,7 +8,8 @@ const ctrl = new postCtrl();
 const router = express.Router();
 
 router.get('/getAllImg', ctrl.getAllImg);
-router.get('/getAllImgByUser', ctrl.getAllImgByUser);
+router.get('/getAllImgByUser/:username', ctrl.getAllImgByUser);
+router.get('/getAllImgByTag/:tag', ctrl.getAllImgByTag);
 router.post('/createImg', multer, ctrl.createImg);
 router.get('/getOneImg/:id', ctrl.getOneImg);
 router.put('/modifyImg/:id', ctrl.modifyImg);

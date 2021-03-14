@@ -51,4 +51,12 @@ export default class postCtrl {
       .then((postImg) => res.status(200).json(postImg))
       .catch((error) => res.status(400).json(error));
   };
+
+  getAllImgByTag = (req, res, next) => {
+    PostImg.find({
+      tags: req.params.tags
+    })
+      .then((postImg) => res.status(200).json(postImg))
+      .catch((error) => res.status(400).json(error));
+  };
 }

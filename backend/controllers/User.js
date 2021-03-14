@@ -103,4 +103,18 @@ export default class userCtrl {
       )
       .catch((error) => res.status(400).json(error));
   };
+
+  isAdmin = async (req, res, next) => {
+    try {
+      let usrName = await userSchema.findOne({
+        username: req.params.username,
+      });
+     if(usrName.admin === false){
+       return res.json(false)
+     }
+      return res.status(200).json(true);
+    } catch (error) {
+      return res.status(404).json(error);
+    }
+  };
 }
