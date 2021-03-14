@@ -29,12 +29,11 @@ export default function AddPicture() {
       username : username,
       title: title,
       imageUrl: 'https://blog.groupeastek.com/wp-content/uploads/2015/10/observatoires-photographiques-du-paysage.jpeg', // faut changer ça
-      tags: ["test","test2"],
-      diffusion: ["toto", "tata"],
+      tags: tags,
+      diffusion: diffusion,
       caption: caption,
       likes: 0,
-      dislikes: 0,
-      creation_date: new Date()
+      dislikes: 0
     }
 
     await fetch("http://localhost:5000/api/postImg/createImg", {
