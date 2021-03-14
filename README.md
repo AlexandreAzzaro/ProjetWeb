@@ -20,3 +20,6 @@ Ouvrez votre navigateur, le projet se lancera à l'adresse : http://localhost:30
 
 ## User disponible
 * username: toto; password: toto;
+* username: admin; password: admin;
+
+Il vous est bien entendu possible de créer vos propres users
