@@ -3,6 +3,7 @@ import { useHistory, Redirect } from "react-router-dom";
 import "./css/AddPicture.css";
 import { Form, Button, InputGroup } from "react-bootstrap";
 import Menu from "./Menu";
+import axios from 'axios';
 
 export default function AddPicture() {
   const [img, setImg] = useState(null);
@@ -21,7 +22,8 @@ export default function AddPicture() {
     setImg(e.target.files[0]);
   }
 
-  async function onSubmitAddPicture() {
+  async function onSubmitAddPicture(e) {
+    e.preventDefault();
     const username = localStorage.getItem("username");
     const title = titleInput.current.value;
     const tags = document
@@ -32,8 +34,8 @@ export default function AddPicture() {
       .value.split(";");
     const caption = captionInput.current.value;
 
-    const formData = new FormData();
-    formData.append('file', img)
+   // const formData = new FormData();
+   // formData.append('file', img)
     const form = {
       username: username,
       title: title,
@@ -46,12 +48,13 @@ export default function AddPicture() {
       dislikes: 0,
       creation_date: Date.now(),
     };
-    formData.append('data', JSON.stringify(form))
+   // formData.append('data', JSON.stringify(form))
 
     await fetch("http://localhost:5000/api/postImg/createImg", {
       method: "POST",
-      body: formData,
-      headers: { "Content-type": "application/json; multipart/form-data; charset=UTF-8" },
+      data: form,
+      //headers: { "Content-Type": "multipart/form-data" },
+      headers:{ "Content-Type": "application/json; charset=UTF-8" },
     });
 
     // requête au back

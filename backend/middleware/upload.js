@@ -1,4 +1,4 @@
-import multer from "multer";
+/*import multer from "multer";
 
 const MIME_TYPES = {
   "image/jpg": "jpg",
@@ -8,8 +8,7 @@ const MIME_TYPES = {
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    console.log(req, file);
-    callback(null, "images");
+    callback(null, "../images");
   },
   filename: (req, file, callback) => {
     const name = file.originalname.split(" ").join("_");
@@ -18,4 +17,36 @@ const storage = multer.diskStorage({
   },
 });
 
-export default storage;
+export default storage;*/
+
+const up = async (req, res, next) => {
+  try {
+    if (!req.files) {
+      res.send({
+        status: false,
+        message: "No file uploaded",
+      });
+    } else {
+      //Use the name of the input field (i.e. "avatar") to retrieve the uploaded file
+      let avatar = req.files.avatar;
+
+      //Use the mv() method to place the file in upload directory (i.e. "uploads")
+      avatar.mv("./images/" + avatar.name);
+
+      //send response
+      res.send({
+        status: true,
+        message: "File is uploaded",
+        data: {
+          name: avatar.name,
+          mimetype: avatar.mimetype,
+          size: avatar.size,
+        },
+      });
+    }
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
+
+export default up;
