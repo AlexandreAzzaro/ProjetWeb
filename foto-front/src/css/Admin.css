@@ -1,0 +1,22 @@
+.adminTitle {
+    margin-top: 10%;
+    text-align: center;
+    margin-bottom: 3%;
+    font-family: 'Bahagia';
+    font-size: 5em;
+}
+table{
+    font-size: 1em;
+    width: 80%;
+    margin-bottom: 3%;
+    margin-left: 10%;
+}
+tr{
+    text-align: center;
+    font-size: 1.2em;
+    
+}
+th, td{
+    border: 3px solid #3F3F3F;
+    padding: 3%;
+}
