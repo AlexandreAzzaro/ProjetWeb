@@ -2,22 +2,12 @@
 
 Notre projet est la conception d'un site de partage de photos.
 
----
-
 ## Exécuter le back
 
 Le back tourne sur le port 5000. Pour l'exécuter, rendez-vous dans le dossier `backend` et exécutez les commandes suivantes :
 
 * npm install
 * npm run start
-
-ou
-
-* npm install
-* npm install -g nodemon
-* nodemon server
-
----
 
 ## Exécuter le front
 

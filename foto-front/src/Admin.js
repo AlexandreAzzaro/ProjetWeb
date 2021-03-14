@@ -34,31 +34,43 @@ class Table extends React.Component {
         // data = JSON.stringify(data);
     };
 
-    remove = (user) => {
-        console.log("Remove", user)
+    async remove(user) {
+        console.log("remove", user);
+        fetch('http://localhost:5000/api/user/deleteUsr/' + user, {
+            method: 'DELETE',
+        })
+            .then(res => res.text()) // or res.json()
+            .then(res => console.log(res))
+            .then(alert("l'utilisateur"+user+"a été supprimé"))
+            .catch(alert("Erreur lors de la suppression de"+user))
     }
 
-    changepw = (user) => {
-        const input = document.getElementById("newMdp"+user);
+    async changepw(user) {
+        const input = document.getElementById("newMdp" + user);
         const newPW = input.value;
         if (newPW === "") {
             alert("Password can not be empty !");
             return;
         }
         input.value = "";
-        console.log("New password", newPW);
-        console.log("Change password", user);
+        
+        const data = {
+            username: user,
+            password: newPW
+        }
+        
+        console.log(data);
+
+        await fetch('http://localhost:5000/api/user/modifyUsr/' + user, {
+            method: 'PUT',
+            body: JSON.stringify(data),
+            headers: { "Content-type": "application/json; charset=UTF-8" }
+        })
+            .then(alert("Le mot de passe a bien été modifié"))
+            .catch(alert("Erreur lors de la modification du mot de passe"))
     }
 
     render() {
-
-        if (localStorage.getItem('loggedIn') !== 'true') {
-            return <Redirect to="/login" />
-        }
-
-        if (localStorage.getItem('admin') !== 'true') {
-            return <Redirect to="/feed" />
-        }
 
         let rows = [];
 
@@ -75,7 +87,7 @@ class Table extends React.Component {
 
                         <Form className="changeMdp">
                             <Form.Control
-                                id={"newMdp"+user.username}
+                                id={"newMdp" + user.username}
                                 className="text"
                                 placeholder="Nouveau mot de passe"
                                 required
@@ -137,10 +149,13 @@ export default function Admin() {
     console.log("username : " + localStorage.getItem('username'));
     console.log("loggedIn : " + localStorage.getItem('loggedIn'));
 
-    if (localStorage.getItem('loggedIn') !== 'true') {
-        // if (localStorage.getItem('loggedIn') === 'true') {
-        return <Redirect to="/login" />
-    }
+    // if (localStorage.getItem('loggedIn') !== 'true') {
+    //     return <Redirect to="/login" />
+    // }
+
+    // if (localStorage.getItem('admin') !== 'true') {
+    //     return <Redirect to="/feed" />
+    // }
 
     return (
         <div >

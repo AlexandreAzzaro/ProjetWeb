@@ -11,7 +11,7 @@ router.get('/isEmailExist/:email', ctrl.isEmailExist);
 router.get('/getOneUsr/:username', ctrl.getOneUsr);
 router.get('/getAllUsr', ctrl.getAllUsr);
 router.get('/isAdmin/:username', ctrl.isAdmin);
-router.get('/isAdmin/:username', ctrl.isAdmin);
+router.put('/modifyUsr/:username', ctrl.modifyUsr)
 router.delete('/deleteUsr/:username', ctrl.deleteUsr);
 
 export default router;

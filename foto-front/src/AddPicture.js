@@ -55,10 +55,10 @@ export default function AddPicture() {
   }
 
   function addTag() {
-    if (addTagsInput.current.value != "" && countTags == 0) {
+    if (addTagsInput.current.value !== "" && countTags === 0) {
       document.getElementsByClassName("tagsInput")[0].value +=
         addTagsInput.current.value;
-    } else if (addTagsInput.current.value != "") {
+    } else if (addTagsInput.current.value !== "") {
       document.getElementsByClassName("tagsInput")[0].value +=
         ";" + addTagsInput.current.value;
     }
@@ -67,10 +67,10 @@ export default function AddPicture() {
   }
 
   function addPerson() {
-    if (addPersonInput.current.value != "" && countPerson == 0) {
+    if (addPersonInput.current.value !== "" && countPerson === 0) {
       document.getElementsByClassName("diffusionInput")[0].value +=
         addPersonInput.current.value;
-    } else if (addPersonInput.current.value != "") {
+    } else if (addPersonInput.current.value !== "") {
       document.getElementsByClassName("diffusionInput")[0].value +=
         ";" + addPersonInput.current.value;
     }
