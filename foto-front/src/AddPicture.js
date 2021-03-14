@@ -3,7 +3,6 @@ import { useHistory, Redirect } from "react-router-dom";
 import "./css/AddPicture.css";
 import { Form, Button, InputGroup } from "react-bootstrap";
 import Menu from "./Menu";
-import axios from 'axios';
 
 export default function AddPicture() {
   const [img, setImg] = useState(null);
