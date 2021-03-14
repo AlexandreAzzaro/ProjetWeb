@@ -21,7 +21,9 @@ export default function AddPicture() {
     setImg(e.target.files[0]);
   }
 
-  async function onSubmitAddPicture() {
+  async function onSubmitAddPicture(event) {
+    event.preventDefault();
+    
     const username = localStorage.getItem("username");
     const title = titleInput.current.value;
     const tags = document
