@@ -7,7 +7,10 @@ export default function PostList() {
 	const [posts, setPosts] = useState([]);
 
 	useEffect(() => {
-		setPosts(data);
+		fetch('http://localhost:5000/api/postImg/getAllImg')
+			.then(response => response.json())
+			.then(setPosts);
+
 	}, []);
 
 	return (
@@ -15,7 +18,7 @@ export default function PostList() {
 			<h1>Feed</h1><br/><br/> 
             <div>
 				{posts.map(post => (
-					<PostThumbnail post={post} key={post.id} />
+					<PostThumbnail post={post} key={post._id} />
 				))}
             </div>
 		</div>

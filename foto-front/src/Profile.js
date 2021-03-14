@@ -10,9 +10,6 @@ import { NavLink, Redirect } from 'react-router-dom';
 
 export default function Profile() {
 
-    console.log("username : " + localStorage.getItem('username'));
-    console.log("loggedIn : " + localStorage.getItem('loggedIn'));
-
     if(localStorage.getItem('loggedIn') !== 'true') {
         return <Redirect to="/login" />
     }

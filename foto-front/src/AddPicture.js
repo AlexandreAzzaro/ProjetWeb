@@ -1,11 +1,13 @@
 import React, { useRef } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import './css/AddPicture.css';
 import {Form, Button, InputGroup} from 'react-bootstrap';
 import Menu from './Menu';
 
 
 export default function AddPicture() {
+
+  
 
   const titleInput = useRef(null),
     photoInput = useRef(null),
@@ -70,6 +72,10 @@ export default function AddPicture() {
     addPersonInput.current.value = "";
   }
 
+  if (localStorage.getItem('loggedIn') !== 'true') {
+    return <Redirect to="/login" />
+  }
+  
   return (
       
       <div className="addPicture">

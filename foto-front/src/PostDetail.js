@@ -12,20 +12,15 @@ export default function PostDetail() {
 
     const { id } = useParams();
     
-    // const [posts, setPosts] = useState([]);
+    const [post, setPost] = useState({});
+    
+    useEffect(() => {
+		fetch(`http://localhost:5000/api/postImg/getOneImg/${id}`)
+			.then(response => response.json())
+			.then(setPost);
+	}, []);
 
-	// useEffect(() => {
-	// 	setPosts(data);
-	// }, []);
-
-    const post = getPostById(data,id);
-  
-
-    function getPostById(tab,id) {
-        return tab.find(el => el.id === id)
-    }
-
-    return(
+    return (
         <div className='postDetail'>
             <Menu /><br/><br/><br/><br/>
             <Container className='container'>
@@ -44,11 +39,12 @@ export default function PostDetail() {
                         <h4 className='title'><b>@{post.username}</b> - {post.title}</h4>
                     </Col>
                 </Row>
-                <Row className='image' style={{marginLeft: '10%'}}>
+                <Row className='image' >
                     
                     <Image 
                         src = {post.imageUrl} 
-                        width = "80%"/>
+                        width = "80%"
+                        style={{marginLeft: "10%"}}/>
                 </Row>
                 <Row style={{marginBottom: '5%'}}>
                     <Col sm={2}></Col>
@@ -75,9 +71,10 @@ export default function PostDetail() {
                     <span className='subTitle'>Tags :</span> 
                 </Row>
                 <Row style={{marginBottom: '5%'}}>
-                {post.tags.map(tag => (
-                        <span>#{tag}&nbsp;</span>
-                    ))}
+                {post.tags}
+                {/* { post.tags.forEach(element => {
+                    <span>element</span>
+                }) } */}
                 </Row>
                 <Row>
                     <span className="subTitle">Description :</span>

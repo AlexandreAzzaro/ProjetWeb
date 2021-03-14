@@ -52,6 +52,14 @@ class Table extends React.Component {
 
     render() {
 
+        if (localStorage.getItem('loggedIn') !== 'true') {
+            return <Redirect to="/login" />
+        }
+
+        if (localStorage.getItem('admin') !== 'true') {
+            return <Redirect to="/feed" />
+        }
+
         let rows = [];
 
         const users = this.state.data;

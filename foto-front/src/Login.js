@@ -28,15 +28,24 @@ export default function Login() {
               password: password
           }
 
-         let test = await fetch('http://localhost:5000/api/user/login',{
+         let reqLog = await fetch('http://localhost:5000/api/user/login',{
               method:'POST',
               body:JSON.stringify(form),
               headers: {"Content-type": "application/json; charset=UTF-8"}
           })
-          console.log(test.status)
-        if(test.status === 200) {
+
+        if(reqLog.status === 200) {
+
+            let admin = 'false';
+            let reqAdmin = await fetch(`http://localhost:5000/api/user/isAdmin/${username}`);
+        
+            if(reqAdmin.status === 200) {
+                admin = 'true';
+            }
+
             localStorage.setItem("username",username);
             localStorage.setItem("loggedIn",'true');
+            localStorage.setItem("admin",admin)
 
             setErrorMessage("");
             push("/feed");

@@ -110,7 +110,7 @@ export default class userCtrl {
         username: req.params.username,
       });
      if(usrName.admin === false){
-       return res.json(false)
+       return res.status(401).json(false)
      }
       return res.status(200).json(true);
     } catch (error) {

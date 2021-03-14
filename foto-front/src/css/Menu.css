@@ -22,3 +22,7 @@
 .toLogin {
     filter: invert(55%) sepia(96%) saturate(903%) hue-rotate(358deg) brightness(101%) contrast(102%);
 }
+
+.toAdmin {
+    filter: invert(55%) sepia(96%) saturate(903%) hue-rotate(358deg) brightness(101%) contrast(102%);
+}

@@ -8,6 +8,7 @@ export default function Feed() {
 
     console.log("username : " + localStorage.getItem('username'));
     console.log("loggedIn : " + localStorage.getItem('loggedIn'));
+    console.log("admin : " + localStorage.getItem('admin'));
 
     if(localStorage.getItem('loggedIn') !== 'true') {
         return <Redirect to="/login" />
