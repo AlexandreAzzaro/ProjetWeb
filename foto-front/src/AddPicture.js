@@ -29,8 +29,8 @@ export default function AddPicture() {
       username : username,
       title: title,
       imageUrl: 'https://blog.groupeastek.com/wp-content/uploads/2015/10/observatoires-photographiques-du-paysage.jpeg', // faut changer ça
-      tags: tags,
-      diffusion: diffusion,
+      tags: ["test","test2"],
+      diffusion: ["toto", "tata"],
       caption: caption,
       likes: 0,
       dislikes: 0,
@@ -42,7 +42,7 @@ export default function AddPicture() {
         body: JSON.stringify(form),
         headers: { "Content-type": "application/json; charset=UTF-8" },
     });
-    
+    console.log("zobi")
 
     // requête au back
     alert("Votre photo a bien été publiée !");
