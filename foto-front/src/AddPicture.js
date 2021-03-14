@@ -32,8 +32,8 @@ export default function AddPicture() {
       .value.split(";");
     const caption = captionInput.current.value;
 
-    const formData = new FormData();
-    formData.append('file', img)
+    //const formData = new FormData();
+    //formData.append('file', img)
     const form = {
       username: username,
       title: title,
@@ -50,8 +50,8 @@ export default function AddPicture() {
 
     await fetch("http://localhost:5000/api/postImg/createImg", {
       method: "POST",
-      body: formData,
-      headers: { "Content-type": "application/json; multipart/form-data; charset=UTF-8" },
+      body: form,
+      headers: { "Content-type": "application/json; charset=UTF-8" },
     });
 
     // requête au back
