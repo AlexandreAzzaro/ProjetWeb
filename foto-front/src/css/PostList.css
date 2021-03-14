@@ -2,6 +2,40 @@
     text-align: center;
 }
 
-.postList .h1 {
-    margin-bottom: 5%;
+.postList .searchBar {
+    margin-left: 25%;
+    margin-right: 25%;
+    width: 50%;
+} 
+
+.postList .text:focus {
+    box-shadow: 0 0 .2rem #FE9802
+}
+
+.postList .button {
+    background-color: #FE9802;
+    border-color: black;
+    margin-bottom: 3%;
+    font-family: 'Bahagia';
+    font-size: 1em;
+}
+
+.postList .button:hover {
+    background-color: #BA6E00;
+    border-color: black;
+}
+
+.postList .button:focus {
+    background-color: #BA6E00;
+    border-color: black;
+    box-shadow: 0 0 .2rem #FE9802
+}
+
+.postList .reload {
+    filter: invert(55%) sepia(96%) saturate(903%) hue-rotate(358deg) brightness(101%) contrast(102%);
+    margin-left: 5%;
+}
+
+.postList .reload:hover {
+    cursor: pointer;
 }
