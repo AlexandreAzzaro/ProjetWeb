@@ -24,14 +24,11 @@ class Table extends React.Component {
     }
 
     async getAllUser() {
-        // GET request using fetch with async/await
         await fetch('http://localhost:5000/api/user/getAllUsr')
             .then(response => response.json())
             .then(result => {
                 this.setState({ data: result })
             })
-        // console.log(data);
-        // data = JSON.stringify(data);
     };
 
     async remove(user) {
@@ -39,10 +36,7 @@ class Table extends React.Component {
         fetch('http://localhost:5000/api/user/deleteUsr/' + user, {
             method: 'DELETE',
         })
-            .then(res => res.text()) // or res.json()
-            .then(res => console.log(res))
-            .then(alert("l'utilisateur"+user+"a été supprimé"))
-            .catch(alert("Erreur lors de la suppression de"+user))
+            .then(alert("l'utilisateur " + user + " a été supprimé"))
     }
 
     async changepw(user) {
@@ -53,21 +47,23 @@ class Table extends React.Component {
             return;
         }
         input.value = "";
-        
+
         const data = {
             username: user,
             password: newPW
         }
-        
+
         console.log(data);
 
-        await fetch('http://localhost:5000/api/user/modifyUsr/' + user, {
-            method: 'PUT',
-            body: JSON.stringify(data),
-            headers: { "Content-type": "application/json; charset=UTF-8" }
-        })
-            .then(alert("Le mot de passe a bien été modifié"))
-            .catch(alert("Erreur lors de la modification du mot de passe"))
+        // Ca ne marche pas
+
+        //     await fetch('http://localhost:5000/api/user/modifyUsr/' + user, {
+        //         method: 'PUT',
+        //         body: JSON.stringify(data),
+        //         headers: { "Content-type": "application/json; charset=UTF-8" }
+        //     })
+        //         .then(alert("Le mot de passe a bien été modifié"))
+        //         // .catch(alert("Erreur lors de la modification du mot de passe"))
     }
 
     render() {
@@ -75,8 +71,6 @@ class Table extends React.Component {
         let rows = [];
 
         const users = this.state.data;
-
-        // console.log(users)
 
         users.map((user) =>
             rows.push(
@@ -107,24 +101,6 @@ class Table extends React.Component {
             )
         );
 
-
-        // for (let key in data) {
-        //     console.log(key);
-        //     rows.push(
-        //         <tr>
-        //             <td>{data[key].username}</td>
-        //             <td>{data[key].mail}</td>
-        //             <td>{data[key].password}</td>
-        //             <td>
-        //                 <IconButton aria-label="delete" onClick={remove}>
-        //                     <DeleteIcon fontSize="large" />
-        //                 </IconButton>
-        //             </td>
-        //         </tr>
-        //     );
-        // };
-
-
         return (
             <table>
                 <thead>
@@ -149,13 +125,13 @@ export default function Admin() {
     console.log("username : " + localStorage.getItem('username'));
     console.log("loggedIn : " + localStorage.getItem('loggedIn'));
 
-    // if (localStorage.getItem('loggedIn') !== 'true') {
-    //     return <Redirect to="/login" />
-    // }
+    if (localStorage.getItem('loggedIn') !== 'true') {
+        return <Redirect to="/login" />
+    }
 
-    // if (localStorage.getItem('admin') !== 'true') {
-    //     return <Redirect to="/feed" />
-    // }
+    if (localStorage.getItem('admin') !== 'true') {
+        return <Redirect to="/feed" />
+    }
 
     return (
         <div >
