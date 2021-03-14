@@ -2,17 +2,21 @@
     margin-top: 10%;
     text-align: center;
     margin-bottom: 3%;
+    font-family: 'Bahagia';
+    font-size: 5em;
 }
 table{
     font-size: 1em;
-    margin: auto;
-    padding-bottom: 2em;
+    width: 80%;
+    margin-bottom: 3%;
+    margin-left: 10%;
 }
 tr{
     text-align: center;
     font-size: 1.2em;
+    
 }
 th, td{
-    /* padding-top: 5px; */
-    border: 5px solid white;
+    border: 3px solid #3F3F3F;
+    padding: 3%;
 }

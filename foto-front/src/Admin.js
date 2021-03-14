@@ -86,7 +86,7 @@ class Table extends React.Component {
                             </IconButton>
                         </Form>
                     </td>
-                    <td>
+                    <td className="test">
                         <IconButton aria-label="delete" onClick={() => this.remove(user.username)}>
                             <DeleteIcon fontSize="large" />
                         </IconButton>

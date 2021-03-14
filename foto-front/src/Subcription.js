@@ -24,8 +24,16 @@ export default function Subcription() {
     let password = passwordInput.current.value;
     let verificationPassword = verificationPasswordInput.current.value;
 
-    if (password !== verificationPassword) {
-      setErrorMessage("Les deux mots de passe ne correspondent pas.");
+    let reqUsername = await fetch(`http://localhost:5000/api/user/isUsernameExist/${username}`);
+    let reqEmail = await fetch(`http://localhost:5000/api/user/isEmailExist/${email}`);
+
+
+    if(reqUsername.status === 200) {
+      setErrorMessage("Ce nom d'utilisateur existe déjà !");
+    } else if(reqEmail.status === 200) {
+      setErrorMessage("Cet email existe déjà !");
+    } else if (password !== verificationPassword) {
+      setErrorMessage("Les deux mots de passe ne correspondent pas !");
     } else {
       setErrorMessage("");
 
@@ -47,6 +55,7 @@ export default function Subcription() {
         headers: { "Content-type": "application/json; charset=UTF-8" },
       });
 
+      alert("Votre compte a bien été créé ! Connectez-vous pour en profiter !");
 
       push('/login');
     }
