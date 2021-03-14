@@ -2,11 +2,13 @@ import PostImg from "../models/postImg.js";
 
 export default class postCtrl {
   createImg = (req, res, next) => {
-    console.log(req.files.file)
+    console.log(req.body.username);
     //const imgObject = JSON.parse(req.body.postImg)
     const postImg = new PostImg({
       ...req.body,
-      imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+      imageUrl: `${req.protocol}://${req.get("host")}/images/${
+        req.file.filename
+      }`,
     });
     postImg
       .save()
@@ -24,7 +26,7 @@ export default class postCtrl {
 
   modifyImg = (req, res, next) => {
     const postImg = new PostImg({
-      ...req.body
+      ...req.body,
     });
     PostImg.updateOne({ _id: req.params.id }, postImg)
       .then(() =>
@@ -40,23 +42,26 @@ export default class postCtrl {
   };
 
   getAllImg = (req, res, next) => {
-    PostImg.find().sort('-creation_date')
+    PostImg.find()
+      .sort("-creation_date")
       .then((postImg) => res.status(200).json(postImg))
       .catch((error) => res.status(400).json(error));
   };
 
   getAllImgByUser = (req, res, next) => {
     PostImg.find({
-      username: req.params.username
-    }).sort('-creation_date')
+      username: req.params.username,
+    })
+      .sort("-creation_date")
       .then((postImg) => res.status(200).json(postImg))
       .catch((error) => res.status(400).json(error));
   };
 
   getAllImgByTag = (req, res, next) => {
     PostImg.find({
-      tags: req.params.tags
-    }).sort('-creation_date')
+      tags: req.params.tags,
+    })
+      .sort("-creation_date")
       .then((postImg) => res.status(200).json(postImg))
       .catch((error) => res.status(400).json(error));
   };

@@ -9,7 +9,7 @@ const postSchema = mongoose.Schema({
   title: { type: String },
   imageUrl: { type: String },
   tags: { type: [String], required: true },
-  creation_date: {type : Date, required: true}, 
+  creation_date: { type: Date, required: true },
 });
 
 export default mongoose.model("PostImg", postSchema);
