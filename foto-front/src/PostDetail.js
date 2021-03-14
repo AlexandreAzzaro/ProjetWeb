@@ -11,17 +11,7 @@ import trash from './img/trash.svg';
 export default function PostDetail({previous}) {
 
     const { id } = useParams();
-    const [post, setPost] = useState({
-        username: "",
-        caption: "",
-        diffusion: [],
-        tags: [],
-        likes: 0,
-        dislikes: 0,
-        title: "",
-        imageUrl: "",
-        creation_date: ""
-    });
+    const [post, setPost] = useState({});
     
     useEffect(() => {
 		fetch(`http://localhost:5000/api/postImg/getOneImg/${id}`)
@@ -50,9 +40,6 @@ export default function PostDetail({previous}) {
                     height='40px'/>
             </NavLink>;
     }
-
-    const date = post.creation_date.split('T')[0];
-    const hour = post.creation_date.split('.')[0];
 
     return (
         <div className='postDetail'>
@@ -98,7 +85,7 @@ export default function PostDetail({previous}) {
                     </Col>
                     
                     <Col>
-                        <b>{date + ' | ' + hour.substr(11,18) }</b>
+                        <b>{post.creation_date}</b>
                         {delButton}
                     </Col>
                 </Row>
@@ -106,9 +93,10 @@ export default function PostDetail({previous}) {
                     <span className='subTitle'>Tags :</span> 
                 </Row>
                 <Row style={{marginBottom: '5%'}}>
-                {post.tags.map(tag => (
-                    <b>#{tag}&nbsp;</b>
-                ))}
+                {post.tags}
+                {/* { post.tags.forEach(element => {
+                    <span>element</span>
+                }) } */}
                 </Row>
                 <Row>
                     <span className="subTitle">Description :</span>
