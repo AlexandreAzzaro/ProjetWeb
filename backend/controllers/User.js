@@ -94,11 +94,12 @@ export default class userCtrl {
   };
 
   modifyUsr = (req, res, next) => {
+    console.log(req.body.username)
     const newUsr = new userSchema({
       ...req.body,
     });
     userSchema
-      .updateOne({ username: req.params.username }, newUsr)
+      .updateOne({ username: req.body.username }, newUsr)
       .then(() =>
         res.status(201).json({ message: "User updated successfully!" })
       )

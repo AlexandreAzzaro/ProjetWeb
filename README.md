@@ -17,3 +17,6 @@ Le front tourne sur le port 3000. Pour l'exécuter, rendez-vous dans le dossier 
 * npm run start
 
 Ouvrez votre navigateur, le projet se lancera à l'adresse : http://localhost:3000/
+
+## User disponible
+* username: toto; password: toto;
