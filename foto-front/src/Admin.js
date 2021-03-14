@@ -32,11 +32,14 @@ class Table extends React.Component {
     };
 
     async remove(user) {
-        console.log("remove", user);
-        fetch('http://localhost:5000/api/user/deleteUsr/' + user, {
-            method: 'DELETE',
-        })
-            .then(alert("l'utilisateur " + user + " a été supprimé"))
+        if(user != 'admin') { 
+            fetch('http://localhost:5000/api/user/deleteUsr/' + user, {
+                method: 'DELETE',
+            })
+                .then(alert("L'utilisateur " + user + " a été supprimé"))
+        } else {
+            alert("Vous ne pouvez pas supprimer l'admin !")
+        }
     }
 
     async changepw(user) {
