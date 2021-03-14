@@ -32,6 +32,8 @@ export default function PostList({type, title}) {
 		fetch('http://localhost:5000/api/postImg/getAllImg')
 		.then(response => response.json())
 		.then(setPosts);
+
+		searchInput.current.value = "";
 	} 
 
 	let searchBar = "";
